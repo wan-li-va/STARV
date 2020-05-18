@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6eddbd7c0a0bfa27e32b68c3f7c3ac78",
+    "revision": "52ef732549c904abce7fe53760650fdb",
     "url": "/STARV/index.html"
   },
   {
-    "revision": "1e6ca5fe6ab4f1766ae6",
-    "url": "/STARV/static/css/main.5f361e03.chunk.css"
+    "revision": "154552fc89a8cfe143b8",
+    "url": "/STARV/static/css/main.523f09c5.chunk.css"
   },
   {
     "revision": "7b50b5c96a230788ff8a",
@@ -16,15 +16,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/STARV/static/js/2.93de7ab3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1e6ca5fe6ab4f1766ae6",
-    "url": "/STARV/static/js/main.435159c3.chunk.js"
+    "revision": "154552fc89a8cfe143b8",
+    "url": "/STARV/static/js/main.2c7f5173.chunk.js"
   },
   {
     "revision": "b7b90dbd5f4bca79280b",
     "url": "/STARV/static/js/runtime-main.432cb3d8.js"
   },
   {
-    "revision": "5d5d9eefa31e5e13a6610d9fa7a283bb",
-    "url": "/STARV/static/media/logo.5d5d9eef.svg"
+    "revision": "ee7cd8ed2dcec943251eb2763684fc6f",
+    "url": "/STARV/static/media/logo.ee7cd8ed.svg"
   }
 ]);
