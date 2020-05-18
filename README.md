@@ -1,3 +1,9 @@
+### Extra Instructions
+To deploy to the Github.io page, run the command `npm run deploy` in the root folder.
+
+Run `npm install` to install necessary packages if stuff isn't working.
+
+If you need to install another package to make things work, make sure you use the `--save-dev` flag. Ex: `npm install gh-pages --save-dev`
 
 ### Some git commands
 
