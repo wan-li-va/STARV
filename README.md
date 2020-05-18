@@ -17,6 +17,8 @@ After editing, committing, and pushing
 `git commit -m "comments"`
 `git push origin name_of_branch`
 
+After pushing to your branch, go to GitHub website --> click new pull request --> choose the branch you want to merge to master --> continue the process
+
 Pulling updates from branch
 `git pull`
 
