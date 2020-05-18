@@ -22,6 +22,10 @@ After pushing to your branch, go to GitHub website --> click new pull request --
 Pulling updates from branch
 `git pull`
 
+Merging master into your branch: Go to your branch after pulling from master --> `git merge master`
+
+ALWAYS CHECK WHAT BRANCH YOU'RE IN BEFORE YOU START CODING
+
 ### Extra Instructions
 To deploy to the Github.io page, run the command `npm run deploy` in the root folder.
 
