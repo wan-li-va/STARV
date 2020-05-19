@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Button from "react-bootstrap/Button";
+
 import Moment from 'moment';
 
 export default class Timer extends Component {
@@ -9,15 +9,11 @@ export default class Timer extends Component {
             // isRunning: false, //tells whether timer is started
             startTime: null, //start time null
             // fastLength: 1 / 60 / 30, // length of fast in hours
-            displayTime: 0,  // time to display on timer; ms left to count down
-            selectedRadio: "Radio1",
+            displayTime: this.props.fastLength*60*60*1000,  // time to display on timer; ms left to count down
+            
             endTime: null,
             durationText: "",
-        };
-
-        this.handleStartStop = this.handleStartStop.bind(this);
-        this.handleOptionChange = this.handleOptionChange.bind(this);
-        this.handleCustomTime = this.handleCustomTime.bind(this);
+        };     
     }
 
     dispTime = setInterval(() => {
@@ -30,12 +26,17 @@ export default class Timer extends Component {
                 })
             } else {
                 this.setState({
-                    isRunning: false,
                     endTime: Date.now(),
                 })
+                this.props.toggleRunning();
                 this.props.saveFast(this.props.fastLength, this.state.displayTime);
             }
+        }else{
+            this.setState({displayTime: this.props.fastLength*60*60*1000})
         }
+
+        // console.log("fast length: " + this.props.fastLength)
+        // console.log("display time: " + this.state.displayTime)   
     }, 1000);
 
     formatTime(ms) {
@@ -56,43 +57,9 @@ export default class Timer extends Component {
         return hours + ":" + minutes + ":" + seconds
     }
 
-    handleOptionChange = changeEvent => {
-        this.setState({
-            selectedRadio: changeEvent.target.id
-        });
+    
 
-        let nowState = changeEvent.target.id;
-        if (nowState !== "Radio3") {
-            this.setState({
-                fastLength: parseInt(changeEvent.target.value)
-            })
-        }
-    };
-
-    handleCustomTime = changeEvent => {
-        let val = parseInt(changeEvent.target.value)
-        if (changeEvent.target.min >= val && changeEvent.target.max <= val) {
-            this.setState({
-                fastLength: parseInt(val)
-            })
-        }
-    }
-
-    handleStartStop = () => {
-        if (this.props.isRunning) {
-            this.setState({
-                isRunning: false,
-                endTime: Date.now(),
-            })
-            this.props.saveFast(this.props.fastLength, this.state.displayTime);
-        } else {
-            this.setState({
-                startTime: Date.now(),
-                isRunning: true,
-                displayTime: this.props.fastLength * 60 * 60 * 1000,
-            })
-        }
-    }
+    
 
     timePassed = setInterval(() => {
         //return Moment().fromNow();

@@ -13,6 +13,7 @@ export default class MainPanel extends Component {
 
     toggleRunning = () => {
         this.setState({ isRunning: !this.state.isRunning })
+        console.log("switching status to " + this.state.isRunning)
     }
 
     setFastLength = (new_length) => {
@@ -26,10 +27,12 @@ export default class MainPanel extends Component {
                 <Timer
                     saveFast={this.props.saveFast}
                     isRunning={this.state.isRunning}
-                    fastLength={this.state.fastLength} />
+                    fastLength={this.state.fastLength}
+                    toggleRunning={this.toggleRunning} />
                 <OptionsPanel
                     toggleRunning={this.toggleRunning}
-                    setFastLength={this.setFastLength} />
+                    setFastLength={this.setFastLength}
+                    isRunning={this.state.isRunning} />
                 <QuotesPanel />
             </div>
         )
