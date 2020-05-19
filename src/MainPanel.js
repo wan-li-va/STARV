@@ -3,10 +3,13 @@ import Timer from './Timer';
 import QuotesPanel from "./QuotesPanel"
 export default class MainPanel extends Component {
     render() {
-        return <div className="MainPanel">
-            <p>MainPanel goes here</p>
+        return (
+        <div className="MainPanel">
+            <h1>STARV</h1>
+            <p><i>A dieting solution for the 21st century</i></p>
             <Timer saveFast={this.props.saveFast} />
             <QuotesPanel />
         </div>
+        )
     }
 }

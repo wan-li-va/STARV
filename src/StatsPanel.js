@@ -36,9 +36,9 @@ class StatsPanel extends Component {
         })
         return( 
         <div className="StatsPanel">
-            <h1>STARV History</h1>
+            <h3>STARV History</h3>
             <div>
-                <strong>Success rate: {(this.props.pastFasts.length==0) ? "" : this.calcSuccess()}% </strong>
+                <strong>Success rate: {(this.props.pastFasts.length===0) ? "" : this.calcSuccess()}% </strong>
             </div>
 
             <div>

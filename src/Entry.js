@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Card from 'react-bootstrap/Card';
-import './Entry.css'
 
 export default class Entry extends Component {
     constructor(props) {
@@ -28,7 +27,7 @@ export default class Entry extends Component {
     }
 
     isSuccess(b) {
-        if(b === true) {
+        if (b === true) {
             return "Yes"
         }
         else {
@@ -38,18 +37,19 @@ export default class Entry extends Component {
 
     render() {
         return (
-            <div className="Entry">
-                <Card className={this.props.fast.wasSuccessful}>
-                    <Card.Body>
-                        <Card.Text>
-                            Date Completed: {this.props.fast.dateMade} <br />
-                            Duration: {this.formatTime(this.props.fast.timePassed)} <br />
-                            Success: {this.isSuccess(this.props.fast.wasSuccessful)}
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-            </div>
+            // <div className="Entry">
+                <div>
+                    <Card bg={this.props.fast.wasSuccessful ? "success" : "danger"}>
+                        <Card.Body>
+                            <Card.Text>
+                                Date Completed: {this.props.fast.dateMade} <br />
+                                Duration: {this.formatTime(this.props.fast.timePassed)} <br />
+                                Success: {this.isSuccess(this.props.fast.wasSuccessful)}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>
+            // </div>
         )
     }
 }

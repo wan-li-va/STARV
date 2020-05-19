@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from "react-bootstrap/Button";
+import Moment from 'moment';
 
 export default class Timer extends Component {
     constructor(props) {
@@ -9,7 +10,9 @@ export default class Timer extends Component {
             startTime: null, //start time null
             fastLength: 1 / 60 / 30, // length of fast in hours
             displayTime: 0,  // time to display on timer; ms left to count down
-            selectedRadio: "Radio1"
+            selectedRadio: "Radio1",
+            endTime: Date.now(),
+            durationText: "",
         };
 
         this.handleStartStop = this.handleStartStop.bind(this);
@@ -27,7 +30,8 @@ export default class Timer extends Component {
                 })
             } else {
                 this.setState({
-                    isRunning: false
+                    isRunning: false,
+                    endTime: Date.now(),
                 })
                 this.props.saveFast(this.state.fastLength, this.state.displayTime);
             }
@@ -48,7 +52,6 @@ export default class Timer extends Component {
         if (hours < 10) {
             hours = "0" + hours;
         }
-
 
         return hours + ":" + minutes + ":" + seconds
     }
@@ -79,6 +82,7 @@ export default class Timer extends Component {
         if (this.state.isRunning) {
             this.setState({
                 isRunning: false,
+                endTime: Date.now(),
             })
             this.props.saveFast(this.state.fastLength, this.state.displayTime);
         } else {
@@ -90,6 +94,11 @@ export default class Timer extends Component {
         }
     }
 
+    timePassed = setInterval(() => {
+        //return Moment().fromNow();
+        return 0;
+    })
+
     render() {
         return (
             <div className="Timer">
@@ -97,7 +106,6 @@ export default class Timer extends Component {
                     {this.state.isRunning ? this.formatTime(this.state.displayTime) : "00:00:00"}
                 </h1>
 
-                <br />
                 <Button onClick={this.handleStartStop} disabled={this.state.isRunning}>Start</Button>
                 <Button variant="danger" onClick={this.handleStartStop} disabled={!this.state.isRunning}>Stop</Button>
                 {/* <button onClick={this.handleStart}>hi</button> */}
@@ -127,16 +135,17 @@ export default class Timer extends Component {
                     </label>
                     <input type="number" id="quantity" name="quantity" min="5" max="23" placeholder="16"
                         disabled={this.state.selectedRadio !== "Radio3"} onChange={this.handleCustomTime} />
+                    <br />
                     <label>
-                        Please pick a number of fasting hours between 4 and 24.
+                        Choose intended fasting hours between 5 and 23, inclusive.
                     </label>
-                    {/* <input type="submit" value="Submit" /> */}
+                    
+                </div>
+                <div>
+                    
                 </div>
             </div >
+                
         );
     }
-
-
-
-
 }   
