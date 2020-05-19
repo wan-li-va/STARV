@@ -44,19 +44,16 @@ export default class StatsPanel extends Component {
         }
     }
 
-    getList = () =>{
-    
+
+
+
+    render() {
+        
         var starvs = this.props.pastFasts.map(fast => {
             return (
                 <Entry key={fast.index.toString()} index={fast.index} fast={fast}> </Entry>
             )
         })
-        
-    }
-
-
-    render() {
-        
 
         return (
             <div className="StatsPanel">
@@ -66,7 +63,7 @@ export default class StatsPanel extends Component {
                 </div>
 
                 <div>
-                    {this.getList()}
+                    {starvs}
                 </div>
 
                 <div>
