@@ -6,12 +6,12 @@ export default class Timer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isRunning: false, //tells whether timer is started
+            // isRunning: false, //tells whether timer is started
             startTime: null, //start time null
-            fastLength: 1 / 60 / 30, // length of fast in hours
+            // fastLength: 1 / 60 / 30, // length of fast in hours
             displayTime: 0,  // time to display on timer; ms left to count down
             selectedRadio: "Radio1",
-            endTime: Date.now(),
+            endTime: null,
             durationText: "",
         };
 
@@ -21,7 +21,7 @@ export default class Timer extends Component {
     }
 
     dispTime = setInterval(() => {
-        if (this.state.isRunning) {
+        if (this.props.isRunning) {
             let prevTime = this.state.displayTime;  // if displayTime is ms differece
             let newTime = prevTime - 1000;
             if (prevTime > 0) {
@@ -33,7 +33,7 @@ export default class Timer extends Component {
                     isRunning: false,
                     endTime: Date.now(),
                 })
-                this.props.saveFast(this.state.fastLength, this.state.displayTime);
+                this.props.saveFast(this.props.fastLength, this.state.displayTime);
             }
         }
     }, 1000);
@@ -79,17 +79,17 @@ export default class Timer extends Component {
     }
 
     handleStartStop = () => {
-        if (this.state.isRunning) {
+        if (this.props.isRunning) {
             this.setState({
                 isRunning: false,
                 endTime: Date.now(),
             })
-            this.props.saveFast(this.state.fastLength, this.state.displayTime);
+            this.props.saveFast(this.props.fastLength, this.state.displayTime);
         } else {
             this.setState({
                 startTime: Date.now(),
                 isRunning: true,
-                displayTime: this.state.fastLength * 60 * 60 * 1000,
+                displayTime: this.props.fastLength * 60 * 60 * 1000,
             })
         }
     }
@@ -103,47 +103,9 @@ export default class Timer extends Component {
         return (
             <div className="Timer">
                 <h1>
-                    {this.state.isRunning ? this.formatTime(this.state.displayTime) : "00:00:00"}
+                    {this.props.isRunning ? this.formatTime(this.state.displayTime) : "00:00:00"}
                 </h1>
 
-                <Button onClick={this.handleStartStop} disabled={this.state.isRunning}>Start</Button>
-                <Button variant="danger" onClick={this.handleStartStop} disabled={!this.state.isRunning}>Stop</Button>
-                {/* <button onClick={this.handleStart}>hi</button> */}
-
-                <div className="form-check">
-                    <input type="radio" name="Radios" id="Radio1" value={16}
-                        checked={this.state.selectedRadio === "Radio1"} onClick={this.handleOptionChange}
-                        disabled={this.state.isRunning} />
-                    <label className="form-check-label">
-                        16:8
-                    </label>
-                </div>
-                <div className="form-check">
-                    <input type="radio" name="Radios" id="Radio2" value={18}
-                        checked={this.state.selectedRadio === "Radio2"} onClick={this.handleOptionChange}
-                        disabled={this.state.isRunning} />
-                    <label className="form-check-label">
-                        18:6
-                    </label>
-                </div>
-                <div className="form-check">
-                    <input type="radio" name="Radios" id="Radio3" value="option3"
-                        checked={this.state.selectedRadio === "Radio3"} onClick={this.handleOptionChange}
-                        disabled={this.state.isRunning} />
-                    <label className="form-check-label">
-                        Custom
-                    </label>
-                    <input type="number" id="quantity" name="quantity" min="5" max="23" placeholder="16"
-                        disabled={this.state.selectedRadio !== "Radio3"} onChange={this.handleCustomTime} />
-                    <br />
-                    <label>
-                        Choose intended fasting hours between 5 and 23, inclusive.
-                    </label>
-                    
-                </div>
-                <div>
-                    
-                </div>
             </div >
                 
         );
