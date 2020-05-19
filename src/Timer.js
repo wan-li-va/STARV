@@ -8,7 +8,7 @@ export default class Timer extends Component {
             startTime: null,
             fastLength: 16, // length of fast in hours
             displayTime: 0,  // time to display on timer; ms left to count down
-            selectedRadio: 0
+            selectedRadio: "option1"
         };
 
         this.handleStart = this.handleStart.bind(this);
