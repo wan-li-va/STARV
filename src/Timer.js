@@ -127,6 +127,9 @@ export default class Timer extends Component {
                     </label>
                     <input type="number" id="quantity" name="quantity" min="5" max="23" placeholder="16"
                         disabled={this.state.selectedRadio !== "Radio3"} onChange={this.handleCustomTime} />
+                    <label>
+                        Please pick a number of fasting hours between 4 and 24.
+                    </label>
                     {/* <input type="submit" value="Submit" /> */}
                 </div>
             </div >
