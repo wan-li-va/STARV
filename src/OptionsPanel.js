@@ -37,15 +37,13 @@ export default class OptionsPanel extends Component {
                 endTime: Date.now(),
             })
             this.props.toggleRunning();
-            this.props.saveFast(this.props.fastLength, this.state.displayTime);
+            this.props.saveFast(this.props.fastLength, this.props.displayTime);
+            
         } else {
-            this.setState({
-                startTime: Date.now(),
-                displayTime: this.props.fastLength * 60 * 60 * 1000,
-            })
+            // this.setState({startTime: Date.now()})
+            this.props.setDisplayTime(this.props.fastLength * 60 * 60 * 1000);
             this.props.toggleRunning();
         }
-        console.log(this.props.isRunning)
     }
 
     render() {

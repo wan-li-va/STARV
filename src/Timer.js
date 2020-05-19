@@ -6,11 +6,7 @@ export default class Timer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // isRunning: false, //tells whether timer is started
-            startTime: null, //start time null
-            // fastLength: 1 / 60 / 30, // length of fast in hours
-            displayTime: this.props.fastLength*60*60*1000,  // time to display on timer; ms left to count down
-            
+            // startTime: null, //start time null            
             endTime: null,
             durationText: "",
         };     
@@ -18,26 +14,20 @@ export default class Timer extends Component {
 
     dispTime = setInterval(() => {
         if (this.props.isRunning) {
-            let prevTime = this.state.displayTime;  // if displayTime is ms differece
+            let prevTime = this.props.displayTime;  // if displayTime is ms differece
             let newTime = prevTime - 1000;
             if (prevTime > 0) {
-                this.setState({
-                    displayTime: parseInt(newTime)
-                })
-            } else {
+                this.props.setDisplayTime(parseInt(newTime))
+            } 
+            else {
                 this.setState({
                     endTime: Date.now(),
                     durationText: Moment(this.state.endTime).fromNow()
                 })
                 this.props.toggleRunning();
-                this.props.saveFast(this.props.fastLength, this.state.displayTime);
+                this.props.saveFast(this.props.fastLength, this.props.displayTime);
             }
-        }else{
-            this.setState({displayTime: this.props.fastLength*60*60*1000})
-        }
-
-        // console.log("fast length: " + this.props.fastLength)
-        // console.log("display time: " + this.state.displayTime)   
+        } 
     }, 1000);
 
     formatTime(ms) {
@@ -72,7 +62,7 @@ export default class Timer extends Component {
         return (
             <div className="Timer">
                 <h1>
-                    {this.props.isRunning ? this.formatTime(this.state.displayTime) : "00:00:00"}
+                    {this.props.isRunning ? this.formatTime(this.props.displayTime) : "00:00:00"}
                 </h1>
 
             </div >
