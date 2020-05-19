@@ -65,19 +65,19 @@ export default class Timer extends Component {
                 <div className="form-check">
                     <input type="radio" name="Radios" id="Radio1" value="option1" checked={this.state.selectedRadio === "option1"} onChange={this.handleOptionChange} />
                     <label className="form-check-label">
-                        16:8                           ‏‏‎
-                        ‏‏‎ </label>
+                        16:8
+                    </label>
                 </div>
                 <div className="form-check">
                     <input type="radio" name="Radios" id="Radio2" value="option2" checked={this.state.selectedRadio === "option2"} onChange={this.handleOptionChange} />
                     <label className="form-check-label">
-                        18:6                        ‏‏‎
-                        ‏‏‎ </label>
+                        18:6
+                    </label>
                 </div>
                 <div className="form-check">
                     <input type="radio" name="Radios" id="Radio3" value="option3" checked={this.state.selectedRadio === "option3"} onChange={this.handleOptionChange} />
                     <label className="form-check-label">
-                        Custom:                       ‏‏‎
+                        Custom:
                     </label>
                     <input type="number" id="quantity" name="quantity" min="5" max="23" />
                     <input type="submit" value="Submit" />
