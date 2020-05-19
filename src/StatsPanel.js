@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import History from "./History.js";
 
 class StatsPanel extends Component {
     render() {
