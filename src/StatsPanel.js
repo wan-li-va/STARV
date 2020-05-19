@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import Entry from './Entry.js';
 import Filter from './Filter.js';
 
-class StatsPanel extends Component {
+export default class StatsPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isFiltered: false,
-            filteredBy: "none"
+            isFiltering: false,
+            filterBy: "none"
         }
     }
 
@@ -29,14 +29,32 @@ class StatsPanel extends Component {
         return percentSucc;
     }
 
+    handleSelectChange = (filterCat) => {
+        if ( filterCat !== "none" ){
+            this.setState({
+                isFiltering: true,
+                filterBy: filterCat
+            })
+        }
+        else {
+            this.setState({
+                isFiltering: false,
+                filterBy: filterCat
+            })
+        }
+    }
+
+
+
 
     render() {
-
+        
         var starvs = this.props.pastFasts.map(fast => {
             return (
                 <Entry key={fast.index.toString()} index={fast.index} fast={fast}> </Entry>
             )
         })
+
         return (
             <div className="StatsPanel">
                 <h3>STARV History</h3>
@@ -56,5 +74,3 @@ class StatsPanel extends Component {
         )
     }
 }
-
-export default StatsPanel;
