@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
-import Button from "react-bootstrap/Button";
+
 import Moment from 'moment';
 
 export default class Timer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isRunning: false, //tells whether timer is started
+            // isRunning: false, //tells whether timer is started
             startTime: null, //start time null
-            fastLength: 1 / 60 / 30, // length of fast in hours
-            displayTime: 0,  // time to display on timer; ms left to count down
-            selectedRadio: "Radio1",
-            endTime: Date.now(),
+            // fastLength: 1 / 60 / 30, // length of fast in hours
+            displayTime: this.props.fastLength*60*60*1000,  // time to display on timer; ms left to count down
+            
+            endTime: null,
             durationText: "",
-            startDisabled: false
-        };
-
-        this.handleStartStop = this.handleStartStop.bind(this);
-        this.handleOptionChange = this.handleOptionChange.bind(this);
-        this.handleCustomTime = this.handleCustomTime.bind(this);
     }
 
     dispTime = setInterval(() => {
-        if (this.state.isRunning) {
+        if (this.props.isRunning) {
             let prevTime = this.state.displayTime;  // if displayTime is ms differece
             let newTime = prevTime - 1000;
             if (prevTime > 0) {
@@ -31,13 +25,18 @@ export default class Timer extends Component {
                 })
             } else {
                 this.setState({
-                    isRunning: false,
                     endTime: Date.now(),
                     durationText: Moment(this.state.endTime).fromNow()
                 })
-                this.props.saveFast(this.state.fastLength, this.state.displayTime);
+                this.props.toggleRunning();
+                this.props.saveFast(this.props.fastLength, this.state.displayTime);
             }
+        }else{
+            this.setState({displayTime: this.props.fastLength*60*60*1000})
         }
+
+        // console.log("fast length: " + this.props.fastLength)
+        // console.log("display time: " + this.state.displayTime)   
     }, 1000);
 
     formatTime(ms) {
@@ -58,6 +57,7 @@ export default class Timer extends Component {
         return hours + ":" + minutes + ":" + seconds
     }
 
+<<<<<<< HEAD
     handleOptionChange = changeEvent => {
         this.setState({
             selectedRadio: changeEvent.target.id
@@ -85,23 +85,11 @@ export default class Timer extends Component {
             })
         }
     }
+=======
+    
+>>>>>>> 84965ab8b5f9af5008fe1405a202f051b6c02038
 
-    handleStartStop = () => {
-        if (this.state.isRunning) {
-            this.setState({
-                isRunning: false,
-                endTime: Date.now(),
-                durationText: Moment(this.state.endTime).fromNow()
-            })
-            this.props.saveFast(this.state.fastLength, this.state.displayTime);
-        } else {
-            this.setState({
-                startTime: Date.now(),
-                isRunning: true,
-                displayTime: this.state.fastLength * 60 * 60 * 1000,
-            })
-        }
-    }
+    
 
     timePassed = setInterval(() => {
         this.setState({
@@ -113,9 +101,10 @@ export default class Timer extends Component {
         return (
             <div className="Timer">
                 <h1>
-                    {this.state.isRunning ? this.formatTime(this.state.displayTime) : "00:00:00"}
+                    {this.props.isRunning ? this.formatTime(this.state.displayTime) : "00:00:00"}
                 </h1>
 
+<<<<<<< HEAD
                 <Button onClick={this.handleStartStop} disabled={this.state.startDisabled}>Start</Button>
                 <Button variant="danger" onClick={this.handleStartStop} disabled={!this.state.isRunning}>Stop</Button>
                 {/* <button onClick={this.handleStart}>hi</button> */}
@@ -154,6 +143,8 @@ export default class Timer extends Component {
                 <div>
                     Time since last fast: {this.state.durationText}
                 </div>
+=======
+>>>>>>> 84965ab8b5f9af5008fe1405a202f051b6c02038
             </div >
                 
         );
