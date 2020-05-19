@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import StatsPanel from "./StatsPanel.js"
 import MainPanel from "./MainPanel.js"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class App extends Component {
   constructor(props) {
