@@ -75,7 +75,6 @@ export default class Timer extends Component {
     }
 
     handleStart = () => {
-        console.log("button clicked")
         this.setState({
             startTime: Date.now(),
             isRunning: true,

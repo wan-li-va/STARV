@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Card from "react-bootstrap/Card";
 import Entry from './Entry.js';
 
 class StatsPanel extends Component {
@@ -10,9 +9,7 @@ class StatsPanel extends Component {
         }
     }
 
-
-    render() {
-        console.log( this.props.pastFasts );
+    calcSuccess = () => {
         let percentSucc;
         if ( this.props.pastFasts.length !== 0 ){
             let successes = 0;
@@ -23,21 +20,25 @@ class StatsPanel extends Component {
                     successes++;
                 }
             }
-            percentSucc = Math.round(successes / this.props.pastFasts.length) * 100;
+            percentSucc = Math.round(successes / this.props.pastFasts.length * 100);
         } else {
-            percentSucc = 0;
+            percentSucc = "";
         }
+        return percentSucc;
+    }
+
+    render() {
             
-        var starvs = this.props.pastFasts.map((fast, index) => {
+        var starvs = this.props.pastFasts.map(fast => {
             return (
-                <Entry key={index} index={index} fast={fast}> </Entry>
+                <Entry key={fast.index.toString()} index={fast.index} fast={fast}> </Entry>
             )
         })
         return( 
         <div className="StatsPanel">
-            <h1>History of STARVs</h1>
+            <h1>STARV History</h1>
             <div>
-            {percentSucc}
+                <strong>Success rate: {(this.props.pastFasts.length==0) ? "" : this.calcSuccess()}% </strong>
             </div>
 
             <div>
