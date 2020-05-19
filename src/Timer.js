@@ -13,6 +13,7 @@ export default class Timer extends Component {
             selectedRadio: "Radio1",
             endTime: Date.now(),
             durationText: "",
+            startDisabled: false
         };
 
         this.handleStartStop = this.handleStartStop.bind(this);
@@ -71,10 +72,16 @@ export default class Timer extends Component {
     };
 
     handleCustomTime = changeEvent => {
+        console.log("hit")
         let val = parseInt(changeEvent.target.value)
         if (changeEvent.target.min <= val && changeEvent.target.max >= val) {
             this.setState({
+                startDisabled: false,
                 fastLength: parseInt(val)
+            })
+        } else {
+            this.setState({
+                startDisabled: true
             })
         }
     }
@@ -109,7 +116,7 @@ export default class Timer extends Component {
                     {this.state.isRunning ? this.formatTime(this.state.displayTime) : "00:00:00"}
                 </h1>
 
-                <Button onClick={this.handleStartStop} disabled={this.state.isRunning}>Start</Button>
+                <Button onClick={this.handleStartStop} disabled={this.state.startDisabled}>Start</Button>
                 <Button variant="danger" onClick={this.handleStartStop} disabled={!this.state.isRunning}>Stop</Button>
                 {/* <button onClick={this.handleStart}>hi</button> */}
 
