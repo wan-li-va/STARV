@@ -45,18 +45,13 @@ export default class StatsPanel extends Component {
     }
 
     getList = () =>{
-        var starvs;
-        if ( !this.state.isFiltering ){
-            starvs = this.props.pastFasts.map(fast => {
-                return (
-                    <Entry key={fast.index.toString()} index={fast.index} fast={fast}> </Entry>
-                )
-            })
-        } else {
-            if ( this.state.filterBy == "fastingTime" ){
-                
-            }
-        }
+    
+        var starvs = this.props.pastFasts.map(fast => {
+            return (
+                <Entry key={fast.index.toString()} index={fast.index} fast={fast}> </Entry>
+            )
+        })
+        
     }
 
 
