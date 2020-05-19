@@ -12,8 +12,7 @@ export default class Timer extends Component {
             selectedRadio: "Radio1"
         };
 
-        this.handleStart = this.handleStart.bind(this);
-        this.handleStop = this.handleStop.bind(this);
+        this.handleStartStop = this.handleStartStop.bind(this);
         this.handleOptionChange = this.handleOptionChange.bind(this);
         this.handleCustomTime = this.handleCustomTime.bind(this);
     }
@@ -60,7 +59,6 @@ export default class Timer extends Component {
         });
 
         let nowState = changeEvent.target.id;
-
         if (nowState !== "Radio3") {
             this.setState({
                 fastLength: parseInt(changeEvent.target.value)
@@ -69,27 +67,26 @@ export default class Timer extends Component {
     };
 
     handleCustomTime = changeEvent => {
-        this.setState({
-            fastLength: parseInt(changeEvent.target.value)
-        })
+        let val = parseInt(changeEvent.target.value)
+        if (changeEvent.target.min >= val && changeEvent.target.max <= val) {
+            this.setState({
+                fastLength: parseInt(val)
+            })
+        }
     }
 
-    handleStart = () => {
-        console.log("button clicked")
-        this.setState({
-            startTime: Date.now(),
-            isRunning: true,
-            displayTime: this.state.fastLength * 60 * 60 * 1000,
-        })
-    }
-
-    //add save functionality
-    handleStop = () => {
+    handleStartStop = () => {
         if (this.state.isRunning) {
             this.setState({
                 isRunning: false,
             })
             this.props.saveFast(this.state.fastLength, this.state.displayTime);
+        } else {
+            this.setState({
+                startTime: Date.now(),
+                isRunning: true,
+                displayTime: this.state.fastLength * 60 * 60 * 1000,
+            })
         }
     }
 
@@ -101,8 +98,8 @@ export default class Timer extends Component {
                 </h1>
 
                 <br />
-                <Button onClick={this.handleStart} disabled={this.state.isRunning}>Start</Button>
-                <Button variant="danger" onClick={this.handleStop} disabled={!this.state.isRunning}>Stop</Button>
+                <Button onClick={this.handleStartStop} disabled={this.state.isRunning}>Start</Button>
+                <Button variant="danger" onClick={this.handleStartStop} disabled={!this.state.isRunning}>Stop</Button>
                 {/* <button onClick={this.handleStart}>hi</button> */}
 
                 <div className="form-check">
