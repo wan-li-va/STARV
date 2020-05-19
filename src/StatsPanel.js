@@ -12,6 +12,7 @@ class StatsPanel extends Component {
 
 
     render() {
+        console.log( this.props.pastFasts );
         let percentSucc;
         if ( this.props.pastFasts.length !== 0 ){
             let successes = 0;
@@ -22,16 +23,14 @@ class StatsPanel extends Component {
                     successes++;
                 }
             }
-            console.log( successes );
             percentSucc = Math.round(successes / this.props.pastFasts.length) * 100;
-            console.log( percentSucc);
         } else {
             percentSucc = 0;
         }
             
         var starvs = this.props.pastFasts.map((fast, index) => {
             return (
-                <Entry index={index} fast={fast}> </Entry>
+                <Entry key={index} index={index} fast={fast}> </Entry>
             )
         })
         return( 

@@ -7,7 +7,7 @@ export default class Timer extends Component {
         this.state = {
             isRunning: false, //tells whether timer is started
             startTime: null, //start time null
-            fastLength: 16, // length of fast in hours
+            fastLength: 1 / 60 / 30, // length of fast in hours
             displayTime: 0,  // time to display on timer; ms left to count down
             selectedRadio: "Radio1"
         };
@@ -19,11 +19,20 @@ export default class Timer extends Component {
     }
 
     dispTime = setInterval(() => {
-        let prevTime = this.state.displayTime;  // if displayTime is ms differece
-        let newTime = prevTime - 1000;
-        this.setState({
-            displayTime: parseInt(newTime)
-        })
+        if (this.state.isRunning) {
+            let prevTime = this.state.displayTime;  // if displayTime is ms differece
+            let newTime = prevTime - 1000;
+            if (prevTime > 0) {
+                this.setState({
+                    displayTime: parseInt(newTime)
+                })
+            } else {
+                this.setState({
+                    isRunning: false
+                })
+                this.props.saveFast(this.state.fastLength, this.state.displayTime);
+            }
+        }
     }, 1000);
 
     formatTime(ms) {
@@ -52,7 +61,7 @@ export default class Timer extends Component {
 
         let nowState = changeEvent.target.id;
 
-        if (nowState != "Radio3") {
+        if (nowState !== "Radio3") {
             this.setState({
                 fastLength: parseInt(changeEvent.target.value)
             })
@@ -119,7 +128,7 @@ export default class Timer extends Component {
                     <label className="form-check-label">
                         Custom
                     </label>
-                    <input type="number" id="quantity" name="quantity" min="5" max="23"
+                    <input type="number" id="quantity" name="quantity" min="5" max="23" placeholder="16"
                         disabled={this.state.selectedRadio !== "Radio3"} onChange={this.handleCustomTime} />
                     {/* <input type="submit" value="Submit" /> */}
                 </div>
@@ -129,5 +138,5 @@ export default class Timer extends Component {
 
 
 
-   
+
 }   
