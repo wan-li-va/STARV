@@ -1,22 +1,24 @@
 import React, { Component } from "react";
 import Entry from './Entry.js';
+import Filter from './Filter.js';
 
 class StatsPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            isFiltered: false,
+            filteredBy: "none"
         }
     }
 
     calcSuccess = () => {
         let percentSucc;
-        if ( this.props.pastFasts.length !== 0 ){
+        if (this.props.pastFasts.length !== 0) {
             let successes = 0;
-            for ( let i = 0; i < this.props.pastFasts.length; i++){
+            for (let i = 0; i < this.props.pastFasts.length; i++) {
                 let fastInst = this.props.pastFasts[i];
                 let wasSucc = fastInst.wasSuccessful;
-                if (wasSucc){
+                if (wasSucc) {
                     successes++;
                 }
             }
@@ -27,28 +29,32 @@ class StatsPanel extends Component {
         return percentSucc;
     }
 
+
     render() {
-            
+
         var starvs = this.props.pastFasts.map(fast => {
             return (
                 <Entry key={fast.index.toString()} index={fast.index} fast={fast}> </Entry>
             )
         })
-        return( 
-        <div className="StatsPanel">
-            <h3>STARV History</h3>
-            <div>
-                <strong>Success rate: {(this.props.pastFasts.length===0) ? "" : this.calcSuccess()}% </strong>
-            </div>
+        return (
+            <div className="StatsPanel">
+                <h3>STARV History</h3>
+                <div>
+                    <strong>Success rate: {(this.props.pastFasts.length === 0) ? "" : this.calcSuccess()}% </strong>
+                </div>
 
-            <div>
-            {starvs}
+                <div>
+                    {starvs}
+                </div>
+
+                <div>
+                    <Filter pastFasts={this.props.pastFasts}/>
+                </div>
+
             </div>
-            
-        </div>
         )
     }
 }
 
 export default StatsPanel;
-            

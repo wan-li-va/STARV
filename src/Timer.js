@@ -27,6 +27,7 @@ export default class Timer extends Component {
             } else {
                 this.setState({
                     endTime: Date.now(),
+                    durationText: Moment(this.state.endTime).fromNow()
                 })
                 this.props.toggleRunning();
                 this.props.saveFast(this.props.fastLength, this.state.displayTime);
@@ -62,9 +63,10 @@ export default class Timer extends Component {
     
 
     timePassed = setInterval(() => {
-        //return Moment().fromNow();
-        return 0;
-    })
+        this.setState({
+            durationText: Moment(this.state.endTime).fromNow()
+        }) 
+    }, 1000*60)
 
     render() {
         return (

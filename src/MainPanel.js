@@ -23,7 +23,10 @@ export default class MainPanel extends Component {
         return (
             <div className="MainPanel">
                 <h1>STARV</h1>
-                <p><i>A dieting solution for the 21st century</i></p>
+                <p>
+                Superb Timer for Achieving Resolutions Victoriously: 
+                <br />
+                <i>A dieting solution for the 21st century</i></p>
                 <Timer
                     saveFast={this.props.saveFast}
                     isRunning={this.state.isRunning}
@@ -32,7 +35,8 @@ export default class MainPanel extends Component {
                 <OptionsPanel
                     toggleRunning={this.toggleRunning}
                     setFastLength={this.setFastLength}
-                    isRunning={this.state.isRunning} />
+                    isRunning={this.state.isRunning}
+                    saveFast={this.props.saveFast} />
                 <QuotesPanel />
             </div>
         )
