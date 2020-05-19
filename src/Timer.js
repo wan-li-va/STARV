@@ -32,6 +32,7 @@ export default class Timer extends Component {
                 this.setState({
                     isRunning: false,
                     endTime: Date.now(),
+                    durationText: Moment(this.state.endTime).fromNow()
                 })
                 this.props.saveFast(this.state.fastLength, this.state.displayTime);
             }
@@ -71,7 +72,7 @@ export default class Timer extends Component {
 
     handleCustomTime = changeEvent => {
         let val = parseInt(changeEvent.target.value)
-        if (changeEvent.target.min >= val && changeEvent.target.max <= val) {
+        if (changeEvent.target.min <= val && changeEvent.target.max >= val) {
             this.setState({
                 fastLength: parseInt(val)
             })
@@ -83,6 +84,7 @@ export default class Timer extends Component {
             this.setState({
                 isRunning: false,
                 endTime: Date.now(),
+                durationText: Moment(this.state.endTime).fromNow()
             })
             this.props.saveFast(this.state.fastLength, this.state.displayTime);
         } else {
@@ -95,9 +97,10 @@ export default class Timer extends Component {
     }
 
     timePassed = setInterval(() => {
-        //return Moment().fromNow();
-        return 0;
-    })
+        this.setState({
+            durationText: Moment(this.state.endTime).fromNow()
+        }) 
+    }, 1000*60)
 
     render() {
         return (
@@ -142,7 +145,7 @@ export default class Timer extends Component {
                     
                 </div>
                 <div>
-                    
+                    Time since last fast: {this.state.durationText}
                 </div>
             </div >
                 

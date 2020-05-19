@@ -1,17 +1,30 @@
 .App {
   text-align: center;
   display: flex;
-  width: 100%;
+  flex-direction: row;
+  width: 100vh;
+  height: 100vh;
 }
 
 .MainPanel {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5vw;
   background-color: lightblue;
-  width: 60%;
 }
 
 .StatsPanel {
-  background-color: lightgreen;
-  width: 40%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  background-color: lightgreen;;
 }
 
 .Timer {

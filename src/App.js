@@ -14,10 +14,10 @@ export default class App extends Component {
   }
 
   saveFast = (length, displayTime) => {
-    let intDisp = parseInt( displayTime );
-    
+    let intDisp = parseInt(displayTime);
+
     let diff = (length * 60 * 60 * 1000) - intDisp;
-    
+
     let instanceFast = {
       dateMade: Moment().format("MMM DD, YYYY"),
       wasSuccessful: intDisp === 0, //if not successful, then it is false that diff === 0
@@ -35,8 +35,12 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <StatsPanel pastFasts={this.state.pastFasts}/>
-        <MainPanel saveFast={this.saveFast} />
+        <div className="StatsPanel">
+          <StatsPanel pastFasts={this.state.pastFasts} />
+        </div>
+        <div className="MainPanel">
+          <MainPanel saveFast={this.saveFast} />
+        </div>
       </div>
     );
   }
