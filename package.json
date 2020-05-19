@@ -37,6 +37,7 @@
   "devDependencies": {
     "bootstrap": "^4.5.0",
     "gh-pages": "^2.2.0",
+    "mathjs": "^7.0.0",
     "react-bootstrap": "^1.0.1"
   }
 }
