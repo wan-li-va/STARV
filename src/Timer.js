@@ -1,21 +1,6 @@
 import React, { Component } from 'react';
 import Button from "react-bootstrap/Button";
 
-const RadioList = [
-    {
-        value: "option1",
-        option: "16:8"
-    },
-    {
-        value: "option2",
-        option: "18:6"
-    },
-    {
-        value: "option3",
-        option: ""
-    }
-];
-
 export default class Timer extends Component {
     constructor(props) {
         super(props);
@@ -24,20 +9,12 @@ export default class Timer extends Component {
             startTime: null, //start time null
             fastLength: 16, // length of fast in hours
             displayTime: 0,  // time to display on timer; ms left to count down
-            selectedRadio: 0,
+            selectedRadio: "option1",
             date: null, // calendar date
         };
 
         this.handleStart = this.handleStart.bind(this);
         this.handleStop = this.handleStop.bind(this);
-    }
-
-    startTimer() {
-        this.setState({
-            startTime: Date.now(),
-            isRunning: true,
-            displayTime: this.state.fastLength * 60 * 60 * 1000,
-        })
     }
 
     dispTime = setInterval(() => {
@@ -74,24 +51,34 @@ export default class Timer extends Component {
 
     handleStart = () => {
         console.log("button clicked")
-        this.startTimer()
+        this.setState({
+            startTime: Date.now(),
+            isRunning: true,
+            displayTime: this.state.fastLength * 60 * 60 * 1000,
+        })
     }
 
     //add save functionality
     handleStop = () => {
-        this.setState({
-            isRunning: false
-        })
+        if (this.state.isRunning) {
+            this.setState({
+                isRunning: false,
+            })
+            this.props.saveFast(this.state.length, this.state.displayTime);
+        }
     }
 
     render() {
         return (
             <div>
-                {this.state.isRunning ? this.formatTime(this.state.displayTime) : "not running"}
-                <br />
-                <Button onClick={this.handleStart}>hi</Button>
-                {/* <button onClick={this.handleStart}>hi</button> */}
+                <h1>
+                    {this.state.isRunning ? this.formatTime(this.state.displayTime) : "00:00:00"}
+                </h1>
 
+                <br />
+                <Button onClick={this.handleStart}>Start</Button>
+                <Button variant="danger" onClick={this.handleStop}>Stop</Button>
+                {/* <button onClick={this.handleStart}>hi</button> */}
             </div >
         )
     }

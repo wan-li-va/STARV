@@ -5,7 +5,7 @@ export default class MainPanel extends Component {
     render() {
         return <div>
             <p>MainPanel goes here</p>
-            <Timer />
+            <Timer saveFast={this.props.saveFast} />
         </div>
     }
 }
