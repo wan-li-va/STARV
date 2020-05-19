@@ -17,9 +17,7 @@ export default class MainPanel extends Component {
     }
 
     toggleRunning() {
-        // console.log("original: " + (!this.state.isRunning))
         this.setState({ isRunning: (!this.state.isRunning) })
-        // console.log("switching status to " + this.state.isRunning)
     }
 
     setFastLength(new_length) {
@@ -28,8 +26,6 @@ export default class MainPanel extends Component {
 
     setDisplayTime(new_time) {
         this.setState({ displayTime: parseInt(new_time) })
-        console.log("setting DT to " + new_time)
-        console.log("it is now " + this.state.displayTime)
     }
     render() {
         return (
