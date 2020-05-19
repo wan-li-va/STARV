@@ -69,7 +69,7 @@ export default class Timer extends Component {
 
     render() {
         return (
-            <div>
+            <div className="Timer">
                 <h1>
                     {this.state.isRunning ? this.formatTime(this.state.displayTime) : "00:00:00"}
                 </h1>

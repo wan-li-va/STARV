@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class StatsPanel extends Component {
     render() {
-        return <div>
+        return <div className="StatsPanel">
             <p>StatsPanel goes here</p>
         </div>
     }
