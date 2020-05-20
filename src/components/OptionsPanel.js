@@ -43,7 +43,8 @@ export default class OptionsPanel extends Component {
                 toggleStartButton={this.props.toggleStartButton}
                 isRunning={this.props.isRunning}
                 durationText={this.props.durationText} />
+
             <div className="timeSince">Time since last fast: {this.props.durationText} </div>
-            </div>
+        </div>
     }
 }
