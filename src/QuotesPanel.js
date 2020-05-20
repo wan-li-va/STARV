@@ -127,5 +127,3 @@ Either write something worth reading or do something worth writing. -Benjamin Fr
 Nothing is impossible, the word itself says, “I’m possible!” -Audrey Hepburn
 The only way to do great work is to love what you do. -Steve Jobs
 If you can dream it, you can achieve it. -Zig Ziglar`.split("\n");
-
-

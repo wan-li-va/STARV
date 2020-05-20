@@ -78,7 +78,6 @@ export default class StatsPanel extends Component {
                 <div>
                     <Filter pastFasts={this.props.pastFasts} handleSelectChange={this.handleSelectChange} />
                 </div>
-
             </div>
         )
     }
