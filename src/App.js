@@ -17,9 +17,10 @@ export default class App extends Component {
   saveFast = (length, displayTime) => {
     let intDisp = parseFloat(displayTime);
     let diff = (length * 60 * 60 * 1000) - intDisp;
-
+    let dt = Date.now();
     let instanceFast = {
       dateMade: Moment().format("MMM DD, YYYY"),
+      dateCompare: dt,
       wasSuccessful: intDisp === 0, //if not successful, then it is false that diff === 0
       timePassed: diff,
       index: this.state.pastFasts.length
