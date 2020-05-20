@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Filter.css'
 
 export default class Filter extends Component {
     constructor(props) {
@@ -14,8 +15,8 @@ export default class Filter extends Component {
 
     render() {
         return (
-            <div>
-                <label margin-right="5px">Sort by</label>
+            <div className="Filter">
+                <label margin-right="5px">Sort by </label>
                 <select id="filterBy" onChange={this.handleSelectChange}>
                     <option value="none">None</option>
                     <option value="fastingTime">Fast Length</option>

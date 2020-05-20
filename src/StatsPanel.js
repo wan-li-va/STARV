@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Entry from './Entry.js';
 import Filter from './Filter.js';
+import './StatsPanel.css';
 
 export default class StatsPanel extends Component {
     constructor(props) {
@@ -32,7 +33,14 @@ export default class StatsPanel extends Component {
 
     handleSelectChange = (filterCat) => {
         if (filterCat !== "none") {
+<<<<<<< HEAD
+            this.setState({
+                isFiltering: true,
+                filterBy: filterCat
+            })
+=======
             this.setState({ isFiltering: true })
+>>>>>>> master
         }
         else {
             this.setState({ isFiltering: false })
@@ -66,8 +74,10 @@ export default class StatsPanel extends Component {
 
         return (
             <div className="StatsPanel">
-                <h3>STARV History</h3>
-                <div>
+                <div className="history">
+                    <h3> <span className="logo">STARV</span> History</h3>
+                </div>
+                <div className="success">
                     <strong>Success rate: {(this.props.pastFasts.length === 0) ? "" : this.calcSuccess()}% </strong>
                 </div>
 

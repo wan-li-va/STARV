@@ -1,0 +1,7 @@
+.MainPanel {
+    display: flex;
+}
+
+.subtitle {
+    font-style: oblique;
+}
