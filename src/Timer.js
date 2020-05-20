@@ -69,7 +69,9 @@ export default class Timer extends Component {
     }
 
     timePassed = setInterval(() => {
-        this.props.setDurationText(Moment(this.state.endTime).fromNow())
+        if(this.props.pastFasts.length !== 0) {
+            this.props.setDurationText(Moment(this.state.endTime).fromNow())
+        }
     }, 1000 * 60)
 
     render() {

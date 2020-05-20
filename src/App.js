@@ -38,7 +38,7 @@ export default class App extends Component {
           <StatsPanel pastFasts={this.state.pastFasts} />
         </div>
         <div className="MainPanel">
-          <MainPanel saveFast={this.saveFast} />
+          <MainPanel saveFast={this.saveFast} pastFasts={this.state.pastFasts} />
         </div>
       </div>
     );

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
+import Moment from 'moment';
 import { BsFillPlayFill } from "react-icons/bs";
 import { BsFillStopFill } from "react-icons/bs";
 
@@ -50,6 +51,7 @@ export default class OptionsPanel extends Component {
             })
             this.props.toggleRunning();
             this.props.saveFast(this.props.fastLength, this.props.displayTime);
+            this.props.setDurationText(Moment(this.state.endTime).fromNow());
 
             this.props.toggleStartButton(false);
         } else {
@@ -95,7 +97,7 @@ export default class OptionsPanel extends Component {
                     Choose intended fasting hours between 5 and 23, inclusive.
                     </label>
             </div>
-            <div className="timeSince">Time since last successful fast: {this.props.durationText}
+            <div className="timeSince">Time since last fast: {this.props.durationText}
             </div>
         </div>
     }
