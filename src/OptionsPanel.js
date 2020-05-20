@@ -75,7 +75,7 @@ export default class OptionsPanel extends Component {
                 <label className="form-check-label">
                     Custom
                     </label>
-                <input type="number" id="quantity" name="quantity" min="5" max="23" placeholder="16"
+                <input type="number" id="quantity" name="quantity" min="5" max="23" placeholder={this.props.fastLength}
                     disabled={this.state.selectedRadio !== "Radio3"} onChange={this.handleCustomTime} />
                 <br />
                 <label>
