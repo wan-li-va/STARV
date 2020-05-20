@@ -59,9 +59,7 @@ export default class ScheduleButtons extends Component {
                 <input type="radio" name="Radios" id="Radio3" value="option3"
                     checked={this.state.selectedRadio === "Radio3"} onClick={this.handleOptionChange}
                     disabled={this.props.isRunning} />
-                <label className="form-check-label">
                     Custom
-                    </label>
                 <OverlayTrigger placement="right" overlay={
                     <Tooltip>
                         Choose intended fasting hours between 5 and 23, inclusive.
