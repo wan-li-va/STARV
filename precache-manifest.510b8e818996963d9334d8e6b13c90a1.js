@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6322208044f178135112a64f9afbc610",
+    "revision": "9747c30587b144e9fd0b5dfa2aaa1914",
     "url": "/STARV/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/STARV/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "56d5a999c7961c95d09f",
+    "revision": "4f589f945ce9b57156d1",
     "url": "/STARV/static/css/main.38a336cb.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/STARV/static/js/2.debeab78.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "56d5a999c7961c95d09f",
-    "url": "/STARV/static/js/main.89eee11e.chunk.js"
+    "revision": "4f589f945ce9b57156d1",
+    "url": "/STARV/static/js/main.c55a46c5.chunk.js"
   },
   {
     "revision": "b7b90dbd5f4bca79280b",
