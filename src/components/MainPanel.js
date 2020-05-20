@@ -9,7 +9,7 @@ export default class MainPanel extends Component {
         this.state = {
             isRunning: false, //tells whether timer is started
             fastLength: 1 / 60 / 30, // length of fast in hours; must be changed later to 16
-            displayTime: 0,  // time to display on timer; ms left to count down
+            displayTime: 2000,  // time to display on timer; ms left to count down
             startDisabled: false,
             durationText: "you have yet to complete a fast", // default value, gets changed immediately after success
         }
@@ -33,7 +33,15 @@ export default class MainPanel extends Component {
     }
 
     setFastLength(new_length) {
-        this.setState({ fastLength: new_length })
+        if (!isNaN(new_length)) {
+            this.setState({
+                fastLength: new_length,
+                displayTime: new_length * 1000 * 60 * 60
+            })
+        }
+        else {
+            console.log("input rejected")
+        }
     }
 
     setDisplayTime(new_time) {
