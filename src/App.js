@@ -15,7 +15,6 @@ export default class App extends Component {
 
   saveFast = (length, displayTime) => {
     let intDisp = parseInt(displayTime);
-
     let diff = (length * 60 * 60 * 1000) - intDisp;
 
     let instanceFast = {

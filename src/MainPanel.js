@@ -17,8 +17,8 @@ export default class MainPanel extends Component {
         this.setDurationText = this.setDurationText.bind(this);
     }
 
-    setDurationText(new_text){
-        this.setState({durationText: new_text})
+    setDurationText(new_text) {
+        this.setState({ durationText: new_text })
     }
 
     toggleRunning() {
@@ -32,7 +32,7 @@ export default class MainPanel extends Component {
     setDisplayTime(new_time) {
         this.setState({ displayTime: parseInt(new_time) })
     }
-    
+
     render() {
         return (
             <div className="MainPanel">
