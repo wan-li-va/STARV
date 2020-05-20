@@ -9,7 +9,8 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pastFasts: []
+      pastFasts: [],
+      isTimerChanged: false
     }
   }
 
@@ -29,6 +30,12 @@ export default class App extends Component {
         pastFasts: [...prevState.pastFasts, instanceFast]
       })
     })
+
+    if (intDisp === 0) {
+      this.setState({ isTimerChanged: true })
+    } else {
+      this.setState({ isTimerChanged: false })
+    }
   }
 
   render() {
@@ -38,7 +45,8 @@ export default class App extends Component {
           <StatsPanel pastFasts={this.state.pastFasts} />
         </div>
         <div className="MainPanel">
-          <MainPanel saveFast={this.saveFast} pastFasts={this.state.pastFasts} />
+          <MainPanel saveFast={this.saveFast} pastFasts={this.state.pastFasts}
+            isTimerChanged={this.state.isTimerChanged} />
         </div>
       </div>
     );
