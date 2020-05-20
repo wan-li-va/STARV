@@ -1,5 +1,7 @@
 .StatsPanel {
     display: flex;
+    outline: pink solid 5px;
+    outline-offset: 10px;
 }
 
 .history {
@@ -12,11 +14,12 @@
     color: green;
     font-family: Impact, Charcoal, sans-serif;
     font-weight: bold;
-    border: 3px solid green;
+    border: 4px solid green;
     border-radius: 15%;
     padding: 5px;
     padding-left: 1vw;
     padding-right: 1vw;
+    background-color: palegreen;
 }
 
 .success {

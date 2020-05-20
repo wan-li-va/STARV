@@ -37,7 +37,7 @@ export default class MainPanel extends Component {
     }
 
     setDisplayTime(new_time) {
-        this.setState({ displayTime: parseInt(new_time) })
+        this.setState({ displayTime: parseFloat(new_time) })
     }
 
     changeTimer = (changed) => {
@@ -61,7 +61,6 @@ export default class MainPanel extends Component {
                     displayTime={this.state.displayTime}
                     toggleRunning={this.toggleRunning}
                     setDisplayTime={this.setDisplayTime}
-                    displayTime={this.state.displayTime}
                     toggleStartButton={this.toggleStartButton}
                     setDurationText={this.setDurationText}
                     pastFasts={this.props.pastFasts} />

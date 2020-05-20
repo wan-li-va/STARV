@@ -35,7 +35,7 @@ export default class Timer extends Component {
             }
 
             if (prevTime > 0) {
-                this.props.setDisplayTime(parseInt(newTime))
+                this.props.setDisplayTime(parseFloat(newTime))
             }
             else {
                 this.setState({

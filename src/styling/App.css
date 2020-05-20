@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   height: 100vh;
-  background-color: lightgray;
+  background-color: whitesmoke;
 }
 
 .MainPanel {
@@ -39,13 +39,13 @@
 .Timer {
   background-color: lightpink;
   border-radius: 5%;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: 4%;
+  padding-bottom: 4%;
   padding-left: 10%;
   padding-right: 10%;
   margin-bottom: 5vh;
   outline: 3px solid red;
-  outline-offset: 1px;
+  outline-offset: 8px;
   border: 10px solid red;
   margin-top: 3vh;
 }
@@ -57,4 +57,17 @@
 .Entries {
   height: 50vh;
   overflow-y: auto;
+}
+
+#customInput {
+  width: 10vh; /* must match length of input box */
+}
+
+#customSelect {
+  display: flex;
+  flex-direction: row;
+}
+
+.radioButtons {
+  align-items: center;
 }
