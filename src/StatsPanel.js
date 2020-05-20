@@ -31,25 +31,33 @@ export default class StatsPanel extends Component {
 
     handleSelectChange = (filterCat) => {
         if (filterCat !== "none") {
-            this.setState({
-                isFiltering: true,
-                filterBy: filterCat
-            })
+            this.setState({ isFiltering: true })
         }
         else {
-            this.setState({
-                isFiltering: false,
-                filterBy: filterCat
-            })
+            this.setState({ isFiltering: false })
         }
+        this.setState({ filterBy: filterCat });
     }
 
-
-
+    sortBy = () => {
+        var starvs = this.props.pastFasts.slice(); //copy of fastFasts to save og list
+        if (this.state.isFiltering) {
+            if (this.state.filterBy === "fastingTime") {
+                starvs.sort(function (fast1, fast2) {
+                    return fast2.timePassed - fast1.timePassed;
+                });
+            } else if (this.state.filterBy === "wasSuccessful") {
+                starvs.sort(function (fast1, fast2) {
+                    return fast2.wasSuccessful - fast1.wasSuccessful;
+                })
+            }
+        }
+        return starvs
+    }
 
     render() {
-
-        var starvs = this.props.pastFasts.map(fast => {
+        let starvs = this.sortBy();
+        let newStarvs = starvs.map(fast => {
             return (
                 <Entry key={fast.index.toString()} index={fast.index} fast={fast}> </Entry>
             )
@@ -62,12 +70,12 @@ export default class StatsPanel extends Component {
                     <strong>Success rate: {(this.props.pastFasts.length === 0) ? "" : this.calcSuccess()}% </strong>
                 </div>
 
-                <div className="Entries">
-                    {starvs}
+                <div>
+                    {newStarvs}
                 </div>
 
                 <div>
-                    <Filter pastFasts={this.props.pastFasts} />
+                    <Filter pastFasts={this.props.pastFasts} handleSelectChange={this.handleSelectChange} />
                 </div>
 
             </div>
