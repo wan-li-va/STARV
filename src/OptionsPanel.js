@@ -95,7 +95,7 @@ export default class OptionsPanel extends Component {
                     Choose intended fasting hours between 5 and 23, inclusive.
                     </label>
             </div>
-            <div className="timeSince">Time since last fast: {this.props.durationText}
+            <div className="timeSince">Time since last successful fast: {this.props.durationText}
             </div>
         </div>
     }
