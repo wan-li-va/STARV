@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Timer from './Timer';
 import QuotesPanel from "./QuotesPanel"
 import OptionsPanel from "./OptionsPanel"
-import './MainPanel.css'
+import '../styling/MainPanel.css'
 export default class MainPanel extends Component {
     constructor(props) {
         super(props)
@@ -24,7 +24,7 @@ export default class MainPanel extends Component {
     toggleStartButton(b) {
         this.setState({ startDisabled: b })
     }
-  
+
     setDurationText(new_text) {
         this.setState({ durationText: new_text })
     }

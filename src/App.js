@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
-import StatsPanel from "./StatsPanel.js"
-import MainPanel from "./MainPanel.js"
+import './styling/App.css';
+import StatsPanel from "./components/StatsPanel.js"
+import MainPanel from "./components/MainPanel.js"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Moment from 'moment';
 
