@@ -19,6 +19,8 @@
   margin-left: 5vh;
   margin-right: 10vh;
   border-radius: 25px;
+  outline: lightblue solid 5px;
+  outline-offset: 10px;
 }
 
 .StatsPanel {
