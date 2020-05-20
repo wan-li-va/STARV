@@ -39,7 +39,7 @@ export default class Entry extends Component {
         return (
             <div className="Entry">
                 <div>
-                    <Card bg={this.props.fast.wasSuccessful ? "success" : "danger"} className={this.props.fast.wasSuccessful ? "succeed" : "notsucceed"} >
+                    <Card bg={this.props.fast.wasSuccessful ? "success" : "danger"}  >
                         <Card.Body>
                             {(this.props.fast.wasSuccessful) ? <div className="text-right"><BsFillAwardFill /></div> : ""}
                             < Card.Text >

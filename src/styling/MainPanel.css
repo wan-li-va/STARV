@@ -16,4 +16,19 @@
     padding: 5px;
     padding-left: 2vw;
     padding-right: 2vw;
+    background-color: palegreen;
+}
+
+.timeSince {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.Quotes {
+    display: flex;
+    height: 10vh;
+    width: 50vw;
+    border: 3px solid grey;
+    align-items: center;
+    justify-content: center;
 }
