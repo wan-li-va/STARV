@@ -16,18 +16,27 @@ export default class OptionsPanel extends Component {
 
     handleOptionChange = changeEvent => {
         this.setState({
-            selectedRadio: changeEvent.target.id
+            selectedRadio: changeEvent.target.id,
         });
 
         let nowState = changeEvent.target.id;
         if (nowState !== "Radio3") {
             this.props.setFastLength(parseInt(changeEvent.target.value));
+            this.setState({
+                startDisabled: false
+            })
+        } else {
+            this.CustomHelper(document.getElementById("quantity"))
         }
     };
 
     handleCustomTime = changeEvent => {
-        let val = parseInt(changeEvent.target.value)
-        if (changeEvent.target.min <= val && changeEvent.target.max >= val) {
+        this.CustomHelper(changeEvent.target)
+    }
+
+    CustomHelper = e => {
+        let val = parseInt(e.value);
+        if (e.min <= val && e.max >= val) {
             this.props.setFastLength(parseInt(val))
             this.setState({
                 startDisabled: false
@@ -46,11 +55,17 @@ export default class OptionsPanel extends Component {
             })
             this.props.toggleRunning();
             this.props.saveFast(this.props.fastLength, this.props.displayTime);
+            this.setState({
+                startDisabled: false
+            })
 
         } else {
             // this.setState({startTime: Date.now()})
             this.props.setDisplayTime(this.props.fastLength * 60 * 60 * 1000);
             this.props.toggleRunning();
+            this.setState({
+                startDisabled: true
+            })
         }
     }
 
