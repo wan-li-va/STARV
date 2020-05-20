@@ -54,7 +54,6 @@ export default class ScheduleButtons extends Component {
                     checked={this.state.selectedRadio === "Radio2"} onClick={this.handleOptionChange}
                     disabled={this.props.isRunning} />
                     18:6
-
             </div>
             <div className="radioButton" id="customSelect">
                 <input type="radio" name="Radios" id="Radio3" value="option3"
