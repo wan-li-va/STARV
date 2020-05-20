@@ -12,7 +12,6 @@ export default class MainPanel extends Component {
             displayTime: 0,  // time to display on timer; ms left to count down
             startDisabled: false,
             durationText: "you have yet to complete a fast", // default value, gets changed immediately after success
-
         }
         this.toggleRunning = this.toggleRunning.bind(this)
         this.setFastLength = this.setFastLength.bind(this)
@@ -38,7 +37,7 @@ export default class MainPanel extends Component {
     }
 
     setDisplayTime(new_time) {
-        this.setState({ displayTime: parseInt(new_time) })
+        this.setState({ displayTime: parseFloat(new_time) })
     }
 
 
@@ -58,9 +57,8 @@ export default class MainPanel extends Component {
                     displayTime={this.state.displayTime}
                     toggleRunning={this.toggleRunning}
                     setDisplayTime={this.setDisplayTime}
-                    displayTime={this.state.displayTime}
                     toggleStartButton={this.toggleStartButton}
-                    setDurationText={this.setDurationText} 
+                    setDurationText={this.setDurationText}
                     pastFasts={this.props.pastFasts} />
 
                 <OptionsPanel

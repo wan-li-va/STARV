@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import Card from 'react-bootstrap/Card';
-import { BsFillAwardFill } from "react-icons/bs";
-import { BsCheck } from "react-icons/bs";
-import { BsX } from "react-icons/bs";
+import { BsFillAwardFill, BsCheck, BsX } from "react-icons/bs";
 import '../styling/Entry.css'
 
 export default class Entry extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-
-        }
+        this.state = {}
     }
 
     formatTime(ms) {
