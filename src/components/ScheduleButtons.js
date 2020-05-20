@@ -14,7 +14,8 @@ export default class ScheduleButtons extends Component {
     }
 
     handleCustomTime = changeEvent => {
-        this.customHelper(changeEvent.target)
+        if (!this.props.isRunning)
+            this.customHelper(changeEvent.target)
     }
 
     customHelper = e => {
