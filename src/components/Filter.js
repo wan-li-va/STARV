@@ -18,7 +18,7 @@ export default class Filter extends Component {
             <div className="Filter">
                 <label margin-right="5px">Sort by </label>
                 <select id="filterBy" onChange={this.handleSelectChange}>
-                    <option value="none">None</option>
+                    <option value="none">Most Recent</option>
                     <option value="fastingTime">Fast Length</option>
                     <option value="wasSuccessful">Successful Attempts</option>
                 </select>

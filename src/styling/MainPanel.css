@@ -1,5 +1,7 @@
 .MainPanel {
     display: flex;
+    outline: lightblue solid 5px;
+    outline-offset: 10px;
 }
 
 .subtitle {
@@ -11,9 +13,10 @@
     color: green;
     font-family: Impact, Charcoal, sans-serif;
     font-weight: bold;
-    border: 3px solid green;
+    border: 4px solid green;
     border-radius: 15%;
     padding: 5px;
     padding-left: 2vw;
     padding-right: 2vw;
+    background-color: palegreen;
 }
