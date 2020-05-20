@@ -9,6 +9,7 @@ export default class StatsPanel extends Component {
             isFiltering: false,
             filterBy: "none"
         }
+        this.handleSelectChange = this.handleSelectChange.bind(this);
     }
 
     calcSuccess = () => {
