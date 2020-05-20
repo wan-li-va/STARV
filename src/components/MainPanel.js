@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Timer from './Timer';
 import QuotesPanel from "./QuotesPanel"
 import OptionsPanel from "./OptionsPanel"
-import './MainPanel.css'
+import '../styling/MainPanel.css'
 export default class MainPanel extends Component {
     constructor(props) {
         super(props)

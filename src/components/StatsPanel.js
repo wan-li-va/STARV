@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Entry from './Entry.js';
 import Filter from './Filter.js';
-import './StatsPanel.css';
+import '../styling/StatsPanel.css';
 
 export default class StatsPanel extends Component {
     constructor(props) {
