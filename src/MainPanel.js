@@ -11,7 +11,7 @@ export default class MainPanel extends Component {
             fastLength: 1 / 60 / 30, // length of fast in hours; must be changed later to 16
             displayTime: 0,  // time to display on timer; ms left to count down
             startDisabled: false,
-            durationText: "",
+            durationText: "you have yet to complete a fast", // default value, gets changed immediately after success
 
         }
         this.toggleRunning = this.toggleRunning.bind(this)
