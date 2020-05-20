@@ -6,7 +6,7 @@ export default class OptionsPanel extends Component {
         super(props);
         this.state = {
             selectedRadio: "Radio1",
-            startDisabled: false
+            buttonDisabled: false
         }
 
         this.handleStartStop = this.handleStartStop.bind(this);
@@ -30,11 +30,11 @@ export default class OptionsPanel extends Component {
         if (changeEvent.target.min <= val && changeEvent.target.max >= val) {
             this.props.setFastLength(parseInt(val))
             this.setState({
-                startDisabled: false
+                buttonDisabled: false
             })
         } else {
             this.setState({
-                startDisabled: true
+                buttonDisabled: true
             })
         }
     }
@@ -56,7 +56,7 @@ export default class OptionsPanel extends Component {
 
     render() {
         return <div id="OptionsPanel">
-            <Button onClick={this.handleStartStop} disabled={this.state.startDisabled}>Start</Button>
+            <Button onClick={this.handleStartStop} disabled={this.state.buttonDisabled}>Start</Button>
             <Button variant="danger" onClick={this.handleStartStop} disabled={!this.props.isRunning}>Stop</Button>
             {/* <button onClick={this.handleStart}>hi</button> */}
 
