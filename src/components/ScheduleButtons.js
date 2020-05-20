@@ -15,10 +15,10 @@ export default class ScheduleButtons extends Component {
 
     handleCustomTime = changeEvent => {
         if (!this.props.isRunning)
-            this.customHelper(changeEvent.target)
+            this.setCustomTime(changeEvent.target)
     }
 
-    customHelper = e => {
+    setCustomTime = e => {
         let val = parseFloat(e.value);
         if (e.min <= val && e.max >= val) {
             this.props.setFastLength(parseFloat(val))
@@ -38,7 +38,7 @@ export default class ScheduleButtons extends Component {
             this.props.setFastLength(parseFloat(changeEvent.target.value));
             this.props.toggleStartButton(false);
         } else {
-            this.customHelper(document.getElementById("quantity"))
+            this.setCustomTime(document.getElementById("quantity"))
         }
     };
 
@@ -76,9 +76,9 @@ export default class ScheduleButtons extends Component {
                     }>
                         <div id="customInput">
                             <input type="number" id="quantity" name="quantity" min="5" max="23" placeholder={this.props.fastLength}
-                                disabled={this.state.selectedRadio !== "Radio3"} onChange={this.handleCustomTime} />
+                                disabled={this.props.isRunning} onChange={this.handleCustomTime} 
+                                onClick={this.handleOptionChange}/>
                             <br />
-
                         </div>
                     </OverlayTrigger>
                 </div>
