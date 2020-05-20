@@ -19,9 +19,11 @@ export default class QuotesPanel extends Component {
     }, 1000 * 5 * 60)
 
     render() {
-        return <div className="Quotes">
-            {this.state.activeQuote}
-        </div>
+        return (
+            <div className="Quotes">
+                {this.state.activeQuote}
+            </div>
+        )
     }
 }
 
