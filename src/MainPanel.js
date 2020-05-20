@@ -10,14 +10,21 @@ export default class MainPanel extends Component {
             isRunning: false, //tells whether timer is started
             fastLength: 1 / 60 / 30, // length of fast in hours; must be changed later to 16
             displayTime: 0,  // time to display on timer; ms left to count down
+            startDisabled: false,
             durationText: "",
+
         }
         this.toggleRunning = this.toggleRunning.bind(this)
         this.setFastLength = this.setFastLength.bind(this)
-        this.setDisplayTime = this.setDisplayTime.bind(this);
+        this.setDisplayTime = this.setDisplayTime.bind(this)
         this.setDurationText = this.setDurationText.bind(this);
+        this.toggleStartButton = this.toggleStartButton.bind(this)
     }
 
+    toggleStartButton(b) {
+        this.setState({ startDisabled: b })
+    }
+  
     setDurationText(new_text) {
         this.setState({ durationText: new_text })
     }
@@ -50,7 +57,10 @@ export default class MainPanel extends Component {
                     displayTime={this.state.displayTime}
                     toggleRunning={this.toggleRunning}
                     setDisplayTime={this.setDisplayTime}
+                    displayTime={this.state.displayTime}
+                    toggleStartButton={this.toggleStartButton}
                     setDurationText={this.setDurationText} />
+
                 <OptionsPanel
                     fastLength={this.state.fastLength}
                     displayTime={this.state.displayTime}
@@ -58,6 +68,8 @@ export default class MainPanel extends Component {
                     isRunning={this.state.isRunning}
                     saveFast={this.props.saveFast}
                     setDisplayTime={this.setDisplayTime}
+                    startDisabled={this.state.startDisabled}
+                    toggleStartButton={this.toggleStartButton}
                     toggleRunning={this.toggleRunning}
                     setFastLength={this.setFastLength} />
                 <QuotesPanel />

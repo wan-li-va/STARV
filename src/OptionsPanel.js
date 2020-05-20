@@ -7,8 +7,7 @@ export default class OptionsPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedRadio: "Radio1",
-            buttonDisabled: false
+            selectedRadio: "Radio1"
         }
 
         this.handleStartStop = this.handleStartStop.bind(this);
@@ -18,26 +17,29 @@ export default class OptionsPanel extends Component {
 
     handleOptionChange = changeEvent => {
         this.setState({
-            selectedRadio: changeEvent.target.id
+            selectedRadio: changeEvent.target.id,
         });
 
         let nowState = changeEvent.target.id;
         if (nowState !== "Radio3") {
             this.props.setFastLength(parseInt(changeEvent.target.value));
+            this.props.toggleStartButton(false);
+        } else {
+            this.CustomHelper(document.getElementById("quantity"))
         }
     };
 
     handleCustomTime = changeEvent => {
-        let val = parseInt(changeEvent.target.value)
-        if (changeEvent.target.min <= val && changeEvent.target.max >= val) {
+        this.CustomHelper(changeEvent.target)
+    }
+
+    CustomHelper = e => {
+        let val = parseInt(e.value);
+        if (e.min <= val && e.max >= val) {
             this.props.setFastLength(parseInt(val))
-            this.setState({
-                buttonDisabled: false
-            })
+            this.props.toggleStartButton(false);
         } else {
-            this.setState({
-                buttonDisabled: true
-            })
+            this.props.toggleStartButton(true);
         }
     }
 
@@ -48,16 +50,19 @@ export default class OptionsPanel extends Component {
             })
             this.props.toggleRunning();
             this.props.saveFast(this.props.fastLength, this.props.displayTime);
+
+            this.props.toggleStartButton(false);
         } else {
             // this.setState({startTime: Date.now()})
             this.props.setDisplayTime(this.props.fastLength * 60 * 60 * 1000);
             this.props.toggleRunning();
+            this.props.toggleStartButton(true);
         }
     }
 
     render() {
         return <div id="OptionsPanel">
-            <Button onClick={this.handleStartStop} disabled={this.state.buttonDisabled}><BsFillPlayFill />Start</Button>
+            <Button onClick={this.handleStartStop} disabled={this.props.startDisabled}><BsFillPlayFill />Start</Button>
             <Button variant="danger" onClick={this.handleStartStop} disabled={!this.props.isRunning}><BsFillStopFill />Stop</Button>
 
             <div className="form-check">
