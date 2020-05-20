@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-export default class Filter extends Component{
-    constructor(props){
+export default class Filter extends Component {
+    constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             filterBy: "none"
         }
     }
@@ -13,11 +13,11 @@ export default class Filter extends Component{
         this.setState({
             filterBy: filterSelect
         })
-        this.props.handleSelectChange( this.state.filterBy )
-        
+        this.props.handleSelectChange(this.state.filterBy)
+
     }
 
-    render(){
+    render() {
         return (
             <div>
                 <label margin-right="5px">Sort by </label>

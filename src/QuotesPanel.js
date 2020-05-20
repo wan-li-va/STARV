@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
 import { random } from "mathjs"
 
@@ -9,14 +9,14 @@ export default class QuotesPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeQuote: quoteList[Math.round(random()* 102)]
+            activeQuote: quoteList[Math.round(random() * 102)]
         }
     }
 
     randomQuote = setInterval(() => {
         let i = Math.round(random() * 102)
-        this.setState({activeQuote: quoteList[i]})
-    }, 1000*5*60)
+        this.setState({ activeQuote: quoteList[i] })
+    }, 1000 * 5 * 60)
 
     render() {
         return <div className="Quotes">

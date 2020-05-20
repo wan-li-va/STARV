@@ -30,7 +30,7 @@ export default class StatsPanel extends Component {
     }
 
     handleSelectChange = (filterCat) => {
-        if ( filterCat !== "none" ){
+        if (filterCat !== "none") {
             this.setState({
                 isFiltering: true,
                 filterBy: filterCat
@@ -48,7 +48,7 @@ export default class StatsPanel extends Component {
 
 
     render() {
-        
+
         var starvs = this.props.pastFasts.map(fast => {
             return (
                 <Entry key={fast.index.toString()} index={fast.index} fast={fast}> </Entry>
@@ -67,7 +67,7 @@ export default class StatsPanel extends Component {
                 </div>
 
                 <div>
-                    <Filter pastFasts={this.props.pastFasts}/>
+                    <Filter pastFasts={this.props.pastFasts} />
                 </div>
 
             </div>
