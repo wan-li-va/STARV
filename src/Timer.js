@@ -46,6 +46,7 @@ export default class Timer extends Component {
                 })
                 this.props.toggleRunning();
                 this.props.saveFast(this.props.fastLength, this.props.displayTime);
+                this.props.toggleStartButton(true);
             }
         }
     }, 1000);

@@ -5,8 +5,7 @@ export default class OptionsPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedRadio: "Radio1",
-            startDisabled: false
+            selectedRadio: "Radio1"
         }
 
         this.handleStartStop = this.handleStartStop.bind(this);
@@ -22,9 +21,7 @@ export default class OptionsPanel extends Component {
         let nowState = changeEvent.target.id;
         if (nowState !== "Radio3") {
             this.props.setFastLength(parseInt(changeEvent.target.value));
-            this.setState({
-                startDisabled: false
-            })
+            this.props.toggleStartButton(false);
         } else {
             this.CustomHelper(document.getElementById("quantity"))
         }
@@ -38,13 +35,9 @@ export default class OptionsPanel extends Component {
         let val = parseInt(e.value);
         if (e.min <= val && e.max >= val) {
             this.props.setFastLength(parseInt(val))
-            this.setState({
-                startDisabled: false
-            })
+            this.props.toggleStartButton(false);
         } else {
-            this.setState({
-                startDisabled: true
-            })
+            this.props.toggleStartButton(true);
         }
     }
 
@@ -55,23 +48,19 @@ export default class OptionsPanel extends Component {
             })
             this.props.toggleRunning();
             this.props.saveFast(this.props.fastLength, this.props.displayTime);
-            this.setState({
-                startDisabled: false
-            })
+            this.props.toggleStartButton(false);
 
         } else {
             // this.setState({startTime: Date.now()})
             this.props.setDisplayTime(this.props.fastLength * 60 * 60 * 1000);
             this.props.toggleRunning();
-            this.setState({
-                startDisabled: true
-            })
+            this.props.toggleStartButton(true);
         }
     }
 
     render() {
         return <div id="OptionsPanel">
-            <Button onClick={this.handleStartStop} disabled={this.state.startDisabled}>Start</Button>
+            <Button onClick={this.handleStartStop} disabled={this.props.startDisabled}>Start</Button>
             <Button variant="danger" onClick={this.handleStartStop} disabled={!this.props.isRunning}>Stop</Button>
             {/* <button onClick={this.handleStart}>hi</button> */}
 
