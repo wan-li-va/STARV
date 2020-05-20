@@ -12,7 +12,6 @@ export default class Timer extends Component {
         this.state = {
             // startTime: null, //start time null            
             endTime: null,
-            durationText: "",
             timerColor: blue
         };
     }
@@ -41,9 +40,9 @@ export default class Timer extends Component {
             else {
                 this.setState({
                     endTime: Date.now(),
-                    durationText: Moment(this.state.endTime).fromNow(),
                     timerColor: blue
                 })
+                this.props.setDurationText(Moment(this.state.endTime).fromNow());
                 this.props.toggleRunning();
                 this.props.saveFast(this.props.fastLength, this.props.displayTime);
                 this.props.toggleStartButton(false);
@@ -70,9 +69,7 @@ export default class Timer extends Component {
     }
 
     timePassed = setInterval(() => {
-        this.setState({
-            durationText: Moment(this.state.endTime).fromNow()
-        })
+        this.props.setDurationText(Moment(this.state.endTime).fromNow())
     }, 1000 * 60)
 
     render() {
@@ -81,8 +78,7 @@ export default class Timer extends Component {
                 <h1 style={this.state.timerColor}>
                     {this.props.isRunning ? this.formatTime(this.props.displayTime) : "00:00:00"}
                 </h1>
-            </div >
-
+            </div>
         );
     }
-}   
+}
