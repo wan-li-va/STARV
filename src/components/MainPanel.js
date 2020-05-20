@@ -37,7 +37,7 @@ export default class MainPanel extends Component {
     }
 
     setDisplayTime(new_time) {
-        this.setState({ displayTime: parseInt(new_time) })
+        this.setState({ displayTime: parseFloat(new_time) })
     }
 
 

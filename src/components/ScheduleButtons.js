@@ -19,9 +19,9 @@ export default class ScheduleButtons extends Component {
     }
 
     customHelper = e => {
-        let val = parseInt(e.value);
+        let val = parseFloat(e.value);
         if (e.min <= val && e.max >= val) {
-            this.props.setFastLength(parseInt(val))
+            this.props.setFastLength(parseFloat(val))
             this.props.toggleStartButton(false);
         } else {
             this.props.toggleStartButton(true);
@@ -35,7 +35,7 @@ export default class ScheduleButtons extends Component {
 
         let nowState = changeEvent.target.id;
         if (nowState !== "Radio3") {
-            this.props.setFastLength(parseInt(changeEvent.target.value));
+            this.props.setFastLength(parseFloat(changeEvent.target.value));
             this.props.toggleStartButton(false);
         } else {
             this.customHelper(document.getElementById("quantity"))
