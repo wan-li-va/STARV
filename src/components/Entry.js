@@ -5,9 +5,7 @@ import { BsFillAwardFill, BsCheck, BsX } from "react-icons/bs";
 export default class Entry extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-
-        }
+        this.state = {}
     }
 
     formatTime(ms) {

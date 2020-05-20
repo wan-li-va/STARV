@@ -9,9 +9,7 @@ import ScheduleButtons from "./ScheduleButtons";
 export default class OptionsPanel extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            
-        }
+        this.state = {}
 
         this.handleStartStop = this.handleStartStop.bind(this);
 
