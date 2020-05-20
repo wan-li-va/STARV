@@ -9,8 +9,8 @@ export default class Timer extends Component {
             // startTime: null, //start time null            
             endTime: null,
             durationText: "",
-    };
-}
+        };
+    }
 
     dispTime = setInterval(() => {
         if (this.props.isRunning) {
@@ -18,7 +18,7 @@ export default class Timer extends Component {
             let newTime = prevTime - 1000;
             if (prevTime > 0) {
                 this.props.setDisplayTime(parseInt(newTime))
-            } 
+            }
             else {
                 this.setState({
                     endTime: Date.now(),
@@ -27,7 +27,7 @@ export default class Timer extends Component {
                 this.props.toggleRunning();
                 this.props.saveFast(this.props.fastLength, this.props.displayTime);
             }
-        } 
+        }
     }, 1000);
 
     formatTime(ms) {
@@ -48,15 +48,15 @@ export default class Timer extends Component {
         return hours + ":" + minutes + ":" + seconds
     }
 
-    
 
-    
+
+
 
     timePassed = setInterval(() => {
         this.setState({
             durationText: Moment(this.state.endTime).fromNow()
-        }) 
-    }, 1000*60)
+        })
+    }, 1000 * 60)
 
     render() {
         return (
@@ -65,7 +65,7 @@ export default class Timer extends Component {
                     {this.props.isRunning ? this.formatTime(this.props.displayTime) : "00:00:00"}
                 </h1>
             </div >
-                
+
         );
     }
 }   

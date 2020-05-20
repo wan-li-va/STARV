@@ -38,17 +38,17 @@ export default class Entry extends Component {
     render() {
         return (
             // <div className="Entry">
-                <div>
-                    <Card bg={this.props.fast.wasSuccessful ? "success" : "danger"}>
-                        <Card.Body>
-                            <Card.Text>
-                                Date Completed: {this.props.fast.dateMade} <br />
+            <div>
+                <Card bg={this.props.fast.wasSuccessful ? "success" : "danger"}>
+                    <Card.Body>
+                        <Card.Text>
+                            Date Completed: {this.props.fast.dateMade} <br />
                                 Duration: {this.formatTime(this.props.fast.timePassed)} <br />
                                 Success: {this.isSuccess(this.props.fast.wasSuccessful)}
-                            </Card.Text>
-                        </Card.Body>
-                    </Card>
-                </div>
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+            </div>
             // </div>
         )
     }
