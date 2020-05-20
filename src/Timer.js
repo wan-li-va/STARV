@@ -48,10 +48,6 @@ export default class Timer extends Component {
         return hours + ":" + minutes + ":" + seconds
     }
 
-    
-
-    
-
     timePassed = setInterval(() => {
         this.setState({
             durationText: Moment(this.state.endTime).fromNow()
@@ -64,6 +60,7 @@ export default class Timer extends Component {
                 <h1>
                     {this.props.isRunning ? this.formatTime(this.props.displayTime) : "00:00:00"}
                 </h1>
+
             </div >
                 
         );

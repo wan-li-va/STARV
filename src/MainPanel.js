@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Timer from './Timer';
 import QuotesPanel from "./QuotesPanel"
 import OptionsPanel from "./OptionsPanel"
+import './MainPanel.css'
 export default class MainPanel extends Component {
     constructor(props) {
         super(props)
@@ -30,11 +31,12 @@ export default class MainPanel extends Component {
     render() {
         return (
             <div className="MainPanel">
-                <h1>STARV</h1>
+                <h1> <span className="logo">STARV</span></h1>
                 <p>
                     Superb Timer for Achieving Resolutions Victoriously:
                 <br />
-                    <i>A dieting solution for the 21st century</i></p>
+                    <span className="subtitle"><i>A dieting solution for the 21st century</i></span>
+                </p>
                 <Timer
                     saveFast={this.props.saveFast}
                     isRunning={this.state.isRunning}

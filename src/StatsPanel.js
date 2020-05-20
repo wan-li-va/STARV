@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Entry from './Entry.js';
 import Filter from './Filter.js';
+import './StatsPanel.css';
 
 export default class StatsPanel extends Component {
     constructor(props) {
@@ -30,7 +31,7 @@ export default class StatsPanel extends Component {
     }
 
     handleSelectChange = (filterCat) => {
-        if ( filterCat !== "none" ){
+        if (filterCat !== "none") {
             this.setState({
                 isFiltering: true,
                 filterBy: filterCat
@@ -48,7 +49,7 @@ export default class StatsPanel extends Component {
 
 
     render() {
-        
+
         var starvs = this.props.pastFasts.map(fast => {
             return (
                 <Entry key={fast.index.toString()} index={fast.index} fast={fast}> </Entry>
@@ -57,17 +58,19 @@ export default class StatsPanel extends Component {
 
         return (
             <div className="StatsPanel">
-                <h3>STARV History</h3>
-                <div>
+                <div className="history">
+                    <h3> <span className="logo">STARV</span> History</h3>
+                </div>
+                <div className="success">
                     <strong>Success rate: {(this.props.pastFasts.length === 0) ? "" : this.calcSuccess()}% </strong>
                 </div>
 
-                <div>
+                <div classname="starvs">
                     {starvs}
                 </div>
 
-                <div>
-                    <Filter pastFasts={this.props.pastFasts}/>
+                <div classname="filter">
+                    <Filter pastFasts={this.props.pastFasts} />
                 </div>
 
             </div>
