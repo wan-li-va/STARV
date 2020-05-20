@@ -12,7 +12,6 @@ export default class MainPanel extends Component {
             displayTime: 0,  // time to display on timer; ms left to count down
             startDisabled: false,
             durationText: "you have yet to complete a fast", // default value, gets changed immediately after success
-
         }
         this.toggleRunning = this.toggleRunning.bind(this)
         this.setFastLength = this.setFastLength.bind(this)
@@ -41,6 +40,9 @@ export default class MainPanel extends Component {
         this.setState({ displayTime: parseInt(new_time) })
     }
 
+    changeTimer = (changed) => {
+        this.setState({ isTimerChanged: changed })
+    }
 
     render() {
         return (
@@ -51,6 +53,7 @@ export default class MainPanel extends Component {
                 <br />
                     <i>A dieting solution for the 21st century</i>
                 </p>
+
                 <Timer
                     saveFast={this.props.saveFast}
                     isRunning={this.state.isRunning}
@@ -60,7 +63,7 @@ export default class MainPanel extends Component {
                     setDisplayTime={this.setDisplayTime}
                     displayTime={this.state.displayTime}
                     toggleStartButton={this.toggleStartButton}
-                    setDurationText={this.setDurationText} 
+                    setDurationText={this.setDurationText}
                     pastFasts={this.props.pastFasts} />
 
                 <OptionsPanel
@@ -74,8 +77,21 @@ export default class MainPanel extends Component {
                     startDisabled={this.state.startDisabled}
                     toggleStartButton={this.toggleStartButton}
                     toggleRunning={this.toggleRunning}
-                    setFastLength={this.setFastLength} />
+                    setFastLength={this.setFastLength}
+                    isTimerChanged={this.props.isTimerChanged}
+                />
                 <QuotesPanel />
+                <div>
+                    {(this.state.isRunning) ?
+                        "" :
+                        (this.props.isTimerChanged) ?
+                            <div>
+                                <img src={require("../images/congrats.gif")} alt="congrats" />
+                            </div>
+                            :
+                            <div></div>
+                    }
+                </div>
             </div>
         )
     }
