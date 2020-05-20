@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 
 export default class OptionsPanel extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             selectedRadio: "Radio1",
@@ -26,7 +26,7 @@ export default class OptionsPanel extends Component {
 
     handleCustomTime = changeEvent => {
         let val = parseInt(changeEvent.target.value)
-        if (changeEvent.target.min >= val && changeEvent.target.max <= val) {
+        if (changeEvent.target.min <= val && changeEvent.target.max >= val) {
             this.props.setFastLength(parseInt(val))
         }
     }
@@ -38,7 +38,7 @@ export default class OptionsPanel extends Component {
             })
             this.props.toggleRunning();
             this.props.saveFast(this.props.fastLength, this.props.displayTime);
-            
+
         } else {
             // this.setState({startTime: Date.now()})
             this.props.setDisplayTime(this.props.fastLength * 60 * 60 * 1000);
