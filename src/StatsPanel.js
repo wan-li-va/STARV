@@ -75,10 +75,7 @@ export default class StatsPanel extends Component {
                     {newStarvs}
                 </div>
 
-                <div>
-                    <Filter pastFasts={this.props.pastFasts} handleSelectChange={this.handleSelectChange} />
-                </div>
-
+                <Filter pastFasts={this.props.pastFasts} handleSelectChange={this.handleSelectChange} />
             </div>
         )
     }

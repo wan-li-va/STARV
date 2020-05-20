@@ -22,8 +22,6 @@ export default class Filter extends Component {
                     <option value="wasSuccessful">Successful Attempts</option>
                 </select>
             </div>
-
         )
     }
-
 }

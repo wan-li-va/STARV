@@ -48,7 +48,6 @@ export default class OptionsPanel extends Component {
             })
             this.props.toggleRunning();
             this.props.saveFast(this.props.fastLength, this.props.displayTime);
-
         } else {
             // this.setState({startTime: Date.now()})
             this.props.setDisplayTime(this.props.fastLength * 60 * 60 * 1000);
@@ -58,9 +57,14 @@ export default class OptionsPanel extends Component {
 
     render() {
         return <div id="OptionsPanel">
+<<<<<<< HEAD
             <Button onClick={this.handleStartStop} disabled={this.state.buttonDisabled}><BsFillPlayFill />Start</Button>
             <Button variant="danger" onClick={this.handleStartStop} disabled={!this.props.isRunning}><BsFillStopFill /> Stop</Button>
             {/* <button onClick={this.handleStart}>hi</button> */}
+=======
+            <Button onClick={this.handleStartStop} disabled={this.state.buttonDisabled}>Start</Button>
+            <Button variant="danger" onClick={this.handleStartStop} disabled={!this.props.isRunning}>Stop</Button>
+>>>>>>> master
 
             <div className="form-check">
                 <input type="radio" name="Radios" id="Radio1" value={16}
@@ -91,10 +95,8 @@ export default class OptionsPanel extends Component {
                 <label>
                     Choose intended fasting hours between 5 and 23, inclusive.
                     </label>
-
             </div>
-            <div>
-
+            <div className="timeSince">Time since last fast:{this.props.durationText}
             </div>
         </div>
     }
