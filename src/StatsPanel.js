@@ -62,7 +62,7 @@ export default class StatsPanel extends Component {
                     <strong>Success rate: {(this.props.pastFasts.length === 0) ? "" : this.calcSuccess()}% </strong>
                 </div>
 
-                <div>
+                <div className="Entries">
                     {starvs}
                 </div>
 

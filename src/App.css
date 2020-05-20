@@ -43,3 +43,8 @@
 .Quotes {
   background-color: lightgray
 }
+
+.Entries {
+  height: 65vh;
+  overflow-y: auto;
+}
