@@ -40,6 +40,9 @@ export default class MainPanel extends Component {
         this.setState({ displayTime: parseFloat(new_time) })
     }
 
+    changeTimer = (changed) => {
+        this.setState({ isTimerChanged: changed })
+    }
 
     render() {
         return (
@@ -50,6 +53,7 @@ export default class MainPanel extends Component {
                 <br />
                     <i>A dieting solution for the 21st century</i>
                 </p>
+
                 <Timer
                     saveFast={this.props.saveFast}
                     isRunning={this.state.isRunning}
@@ -72,8 +76,21 @@ export default class MainPanel extends Component {
                     startDisabled={this.state.startDisabled}
                     toggleStartButton={this.toggleStartButton}
                     toggleRunning={this.toggleRunning}
-                    setFastLength={this.setFastLength} />
+                    setFastLength={this.setFastLength}
+                    isTimerChanged={this.props.isTimerChanged}
+                />
                 <QuotesPanel />
+                <div>
+                    {(this.state.isRunning) ?
+                        "" :
+                        (this.props.isTimerChanged) ?
+                            <div>
+                                <img src={require("../images/congrats.gif")} alt="congrats" />
+                            </div>
+                            :
+                            <div></div>
+                    }
+                </div>
             </div>
         )
     }
