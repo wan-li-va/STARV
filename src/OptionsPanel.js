@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import { BsFillPlayFill } from "react-icons/bs";
 import { BsFillStopFill } from "react-icons/bs";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 export default class OptionsPanel extends Component {
     constructor(props) {
@@ -65,35 +67,46 @@ export default class OptionsPanel extends Component {
             <Button onClick={this.handleStartStop} disabled={this.props.startDisabled}><BsFillPlayFill />Start</Button>
             <Button variant="danger" onClick={this.handleStartStop} disabled={!this.props.isRunning}><BsFillStopFill />Stop</Button>
 
-            <div className="form-check">
-                <input type="radio" name="Radios" id="Radio1" value={16}
-                    checked={this.state.selectedRadio === "Radio1"} onClick={this.handleOptionChange}
-                    disabled={this.props.isRunning} />
-                <label className="form-check-label">
-                    16:8
+            <div className="radioButtons">
+                <div className="form-check">
+                    <input type="radio" name="Radios" id="Radio1" value={16}
+                        checked={this.state.selectedRadio === "Radio1"} onClick={this.handleOptionChange}
+                        disabled={this.props.isRunning} />
+                    <label className="form-check-label">
+                        16:8
                     </label>
-            </div>
-            <div className="form-check">
-                <input type="radio" name="Radios" id="Radio2" value={18}
-                    checked={this.state.selectedRadio === "Radio2"} onClick={this.handleOptionChange}
-                    disabled={this.props.isRunning} />
-                <label className="form-check-label">
-                    18:6
+                </div>
+                <div className="form-check">
+                    <input type="radio" name="Radios" id="Radio2" value={18}
+                        checked={this.state.selectedRadio === "Radio2"} onClick={this.handleOptionChange}
+                        disabled={this.props.isRunning} />
+                    <label className="form-check-label">
+                        18:6
                     </label>
-            </div>
-            <div className="form-check">
-                <input type="radio" name="Radios" id="Radio3" value="option3"
-                    checked={this.state.selectedRadio === "Radio3"} onClick={this.handleOptionChange}
-                    disabled={this.props.isRunning} />
-                <label className="form-check-label">
-                    Custom
+                </div>
+
+                <div id="customSelect">
+                    <div className="form-check">
+                        <input type="radio" name="Radios" id="Radio3" value="option3"
+                            checked={this.state.selectedRadio === "Radio3"} onClick={this.handleOptionChange}
+                            disabled={this.props.isRunning} />
+                        <label className="form-check-label">
+                            Custom
                     </label>
-                <input type="number" id="quantity" name="quantity" min="5" max="23" placeholder={this.props.fastLength}
-                    disabled={this.state.selectedRadio !== "Radio3"} onChange={this.handleCustomTime} />
-                <br />
-                <label>
-                    Choose intended fasting hours between 5 and 23, inclusive.
-                    </label>
+                        <OverlayTrigger placement="right" overlay={
+                            <Tooltip>
+                                Choose intended fasting hours between 5 and 23, inclusive.
+                    </Tooltip>
+                        }>
+                            <div id="customInput">
+                                <input type="number" id="quantity" name="quantity" min="5" max="23" placeholder={this.props.fastLength}
+                                    disabled={this.state.selectedRadio !== "Radio3"} onChange={this.handleCustomTime} />
+                                <br />
+
+                            </div>
+                        </OverlayTrigger>
+                    </div>
+                </div>
             </div>
             <div className="timeSince">Time since last successful fast: {this.props.durationText}
             </div>
