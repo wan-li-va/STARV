@@ -44,11 +44,11 @@ export default class MainPanel extends Component {
     render() {
         return (
             <div className="MainPanel">
-                <h1> <span className="logo">STARV</span></h1>
-                <p>
+                <h1> <span className="mainlogo">STARV</span></h1>
+                <p className="subtitle">
                     Superb Timer for Achieving Resolutions Victoriously:
                 <br />
-                    <span className="subtitle"><i>A dieting solution for the 21st century</i></span>
+                    <i>A dieting solution for the 21st century</i>
                 </p>
                 <Timer
                     saveFast={this.props.saveFast}
