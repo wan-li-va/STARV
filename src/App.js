@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './styling/App.css';
-import StatsPanel from "./components/StatsPanel.js"
-import MainPanel from "./components/MainPanel.js"
+import StatsPanel from "./components/StatsPanel.js";
+import MainPanel from "./components/MainPanel.js";
+import BadgePanel from "./components/BadgePanel.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Moment from 'moment';
 
@@ -39,6 +40,9 @@ export default class App extends Component {
         </div>
         <div className="MainPanel">
           <MainPanel saveFast={this.saveFast} pastFasts={this.state.pastFasts} />
+        </div>
+        <div className="BadgePanel">
+          <BadgePanel pastFasts={this.state.pastFasts} />
         </div>
       </div>
     );
