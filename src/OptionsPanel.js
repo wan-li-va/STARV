@@ -57,14 +57,8 @@ export default class OptionsPanel extends Component {
 
     render() {
         return <div id="OptionsPanel">
-<<<<<<< HEAD
             <Button onClick={this.handleStartStop} disabled={this.state.buttonDisabled}><BsFillPlayFill />Start</Button>
-            <Button variant="danger" onClick={this.handleStartStop} disabled={!this.props.isRunning}><BsFillStopFill /> Stop</Button>
-            {/* <button onClick={this.handleStart}>hi</button> */}
-=======
-            <Button onClick={this.handleStartStop} disabled={this.state.buttonDisabled}>Start</Button>
-            <Button variant="danger" onClick={this.handleStartStop} disabled={!this.props.isRunning}>Stop</Button>
->>>>>>> master
+            <Button variant="danger" onClick={this.handleStartStop} disabled={!this.props.isRunning}><BsFillStopFill />Stop</Button>
 
             <div className="form-check">
                 <input type="radio" name="Radios" id="Radio1" value={16}
