@@ -33,14 +33,7 @@ export default class StatsPanel extends Component {
 
     handleSelectChange = (filterCat) => {
         if (filterCat !== "none") {
-<<<<<<< HEAD
-            this.setState({
-                isFiltering: true,
-                filterBy: filterCat
-            })
-=======
             this.setState({ isFiltering: true })
->>>>>>> master
         }
         else {
             this.setState({ isFiltering: false })
