@@ -1,0 +1,15 @@
+.radioButtons {
+    display: flex;
+    flex-direction: row;
+    margin-left: 3vw;
+}
+
+.timeSince {
+    margin-top: 3vh;
+}
+
+.customSelect {
+    flex-direction: row;
+    background-color: palegreen;
+    width: 15vw;
+}
