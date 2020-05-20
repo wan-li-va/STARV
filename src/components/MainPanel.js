@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Timer from './Timer';
 import QuotesPanel from "./QuotesPanel"
 import OptionsPanel from "./OptionsPanel"
-import './MainPanel.css'
+import '../styling/MainPanel.css'
 export default class MainPanel extends Component {
     constructor(props) {
         super(props)
@@ -41,6 +41,7 @@ export default class MainPanel extends Component {
         this.setState({ displayTime: parseInt(new_time) })
     }
 
+
     render() {
         return (
             <div className="MainPanel">
@@ -59,12 +60,14 @@ export default class MainPanel extends Component {
                     setDisplayTime={this.setDisplayTime}
                     displayTime={this.state.displayTime}
                     toggleStartButton={this.toggleStartButton}
-                    setDurationText={this.setDurationText} />
+                    setDurationText={this.setDurationText} 
+                    pastFasts={this.props.pastFasts} />
 
                 <OptionsPanel
                     fastLength={this.state.fastLength}
                     displayTime={this.state.displayTime}
                     durationText={this.state.durationText}
+                    setDurationText={this.setDurationText}
                     isRunning={this.state.isRunning}
                     saveFast={this.props.saveFast}
                     setDisplayTime={this.setDisplayTime}
