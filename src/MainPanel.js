@@ -8,13 +8,18 @@ export default class MainPanel extends Component {
         super(props)
         this.state = {
             isRunning: false, //tells whether timer is started
-            fastLength: 1 / 60 / 30, // length of fast in hours
+            fastLength: 1 / 60 / 30, // length of fast in hours; must be changed later to 16
             displayTime: 0,  // time to display on timer; ms left to count down
+            durationText: "",
         }
-
         this.toggleRunning = this.toggleRunning.bind(this)
         this.setFastLength = this.setFastLength.bind(this)
         this.setDisplayTime = this.setDisplayTime.bind(this);
+        this.setDurationText = this.setDurationText.bind(this);
+    }
+
+    setDurationText(new_text) {
+        this.setState({ durationText: new_text })
     }
 
     toggleRunning() {
@@ -28,6 +33,7 @@ export default class MainPanel extends Component {
     setDisplayTime(new_time) {
         this.setState({ displayTime: parseInt(new_time) })
     }
+
     render() {
         return (
             <div className="MainPanel">
@@ -41,17 +47,19 @@ export default class MainPanel extends Component {
                     saveFast={this.props.saveFast}
                     isRunning={this.state.isRunning}
                     fastLength={this.state.fastLength}
+                    displayTime={this.state.displayTime}
                     toggleRunning={this.toggleRunning}
                     setDisplayTime={this.setDisplayTime}
-                    displayTime={this.state.displayTime} />
+                    setDurationText={this.setDurationText} />
                 <OptionsPanel
                     fastLength={this.state.fastLength}
                     displayTime={this.state.displayTime}
-                    toggleRunning={this.toggleRunning}
-                    setFastLength={this.setFastLength}
+                    durationText={this.state.durationText}
                     isRunning={this.state.isRunning}
                     saveFast={this.props.saveFast}
-                    setDisplayTime={this.setDisplayTime} />
+                    setDisplayTime={this.setDisplayTime}
+                    toggleRunning={this.toggleRunning}
+                    setFastLength={this.setFastLength} />
                 <QuotesPanel />
             </div>
         )

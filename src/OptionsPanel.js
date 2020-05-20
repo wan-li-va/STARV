@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 
 export default class OptionsPanel extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             selectedRadio: "Radio1",
+            buttonDisabled: false
         }
 
         this.handleStartStop = this.handleStartStop.bind(this);
@@ -26,8 +27,15 @@ export default class OptionsPanel extends Component {
 
     handleCustomTime = changeEvent => {
         let val = parseInt(changeEvent.target.value)
-        if (changeEvent.target.min >= val && changeEvent.target.max <= val) {
+        if (changeEvent.target.min <= val && changeEvent.target.max >= val) {
             this.props.setFastLength(parseInt(val))
+            this.setState({
+                buttonDisabled: false
+            })
+        } else {
+            this.setState({
+                buttonDisabled: true
+            })
         }
     }
 
@@ -38,7 +46,6 @@ export default class OptionsPanel extends Component {
             })
             this.props.toggleRunning();
             this.props.saveFast(this.props.fastLength, this.props.displayTime);
-            
         } else {
             // this.setState({startTime: Date.now()})
             this.props.setDisplayTime(this.props.fastLength * 60 * 60 * 1000);
@@ -48,9 +55,8 @@ export default class OptionsPanel extends Component {
 
     render() {
         return <div id="OptionsPanel">
-            <Button onClick={this.handleStartStop} disabled={this.props.isRunning}>Start</Button>
+            <Button onClick={this.handleStartStop} disabled={this.state.buttonDisabled}>Start</Button>
             <Button variant="danger" onClick={this.handleStartStop} disabled={!this.props.isRunning}>Stop</Button>
-            {/* <button onClick={this.handleStart}>hi</button> */}
 
             <div className="form-check">
                 <input type="radio" name="Radios" id="Radio1" value={16}
@@ -75,16 +81,14 @@ export default class OptionsPanel extends Component {
                 <label className="form-check-label">
                     Custom
                     </label>
-                <input type="number" id="quantity" name="quantity" min="5" max="23" placeholder="16"
+                <input type="number" id="quantity" name="quantity" min="5" max="23" placeholder={this.props.fastLength}
                     disabled={this.state.selectedRadio !== "Radio3"} onChange={this.handleCustomTime} />
                 <br />
                 <label>
                     Choose intended fasting hours between 5 and 23, inclusive.
                     </label>
-
             </div>
-            <div>
-
+            <div className="timeSince">Time since last fast:{this.props.durationText}
             </div>
         </div>
     }

@@ -10,6 +10,7 @@ export default class StatsPanel extends Component {
             isFiltering: false,
             filterBy: "none"
         }
+        this.handleSelectChange = this.handleSelectChange.bind(this);
     }
 
     calcSuccess = () => {
@@ -32,25 +33,40 @@ export default class StatsPanel extends Component {
 
     handleSelectChange = (filterCat) => {
         if (filterCat !== "none") {
+<<<<<<< HEAD
             this.setState({
                 isFiltering: true,
                 filterBy: filterCat
             })
+=======
+            this.setState({ isFiltering: true })
+>>>>>>> master
         }
         else {
-            this.setState({
-                isFiltering: false,
-                filterBy: filterCat
-            })
+            this.setState({ isFiltering: false })
         }
+        this.setState({ filterBy: filterCat });
     }
 
-
-
+    sortBy = () => {
+        var starvs = this.props.pastFasts.slice(); //copy of fastFasts to save og list
+        if (this.state.isFiltering) {
+            if (this.state.filterBy === "fastingTime") {
+                starvs.sort(function (fast1, fast2) {
+                    return fast2.timePassed - fast1.timePassed;
+                });
+            } else if (this.state.filterBy === "wasSuccessful") {
+                starvs.sort(function (fast1, fast2) {
+                    return fast2.wasSuccessful - fast1.wasSuccessful;
+                })
+            }
+        }
+        return starvs
+    }
 
     render() {
-
-        var starvs = this.props.pastFasts.map(fast => {
+        let starvs = this.sortBy();
+        let newStarvs = starvs.map(fast => {
             return (
                 <Entry key={fast.index.toString()} index={fast.index} fast={fast}> </Entry>
             )
@@ -65,14 +81,11 @@ export default class StatsPanel extends Component {
                     <strong>Success rate: {(this.props.pastFasts.length === 0) ? "" : this.calcSuccess()}% </strong>
                 </div>
 
-                <div classname="starvs">
-                    {starvs}
+                <div className="Entries">
+                    {newStarvs}
                 </div>
 
-                <div classname="filter">
-                    <Filter pastFasts={this.props.pastFasts} />
-                </div>
-
+                <Filter pastFasts={this.props.pastFasts} handleSelectChange={this.handleSelectChange} />
             </div>
         )
     }

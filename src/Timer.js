@@ -2,32 +2,51 @@ import React, { Component } from 'react';
 
 import Moment from 'moment';
 
+let yellow = { color: 'yellow' };
+let blue = { color: 'blue' };
+let green = { color: 'green' };
+
 export default class Timer extends Component {
     constructor(props) {
         super(props);
         this.state = {
             // startTime: null, //start time null            
             endTime: null,
-            durationText: "",
-    };
-}
+            timerColor: blue
+        };
+    }
 
     dispTime = setInterval(() => {
         if (this.props.isRunning) {
             let prevTime = this.props.displayTime;  // if displayTime is ms differece
             let newTime = prevTime - 1000;
+            if (newTime <= 7200000 && newTime > 1800000) {
+                this.setState({
+                    timerColor: yellow
+                })
+            } else if (newTime <= 1800000) {
+                this.setState({
+                    timerColor: green
+                })
+            } else {
+                this.setState({
+                    timerColor: blue
+                })
+            }
+
             if (prevTime > 0) {
                 this.props.setDisplayTime(parseInt(newTime))
-            } 
+            }
             else {
                 this.setState({
                     endTime: Date.now(),
-                    durationText: Moment(this.state.endTime).fromNow()
+                    timerColor: blue
                 })
+                this.props.setDurationText(Moment(this.state.endTime).fromNow());
                 this.props.toggleRunning();
                 this.props.saveFast(this.props.fastLength, this.props.displayTime);
             }
-        } 
+        }
     }, 1000);
 
     formatTime(ms) {
@@ -49,20 +68,16 @@ export default class Timer extends Component {
     }
 
     timePassed = setInterval(() => {
-        this.setState({
-            durationText: Moment(this.state.endTime).fromNow()
-        }) 
-    }, 1000*60)
+        this.props.setDurationText(Moment(this.state.endTime).fromNow())
+    }, 1000 * 60)
 
     render() {
         return (
             <div className="Timer">
-                <h1>
+                <h1 style={this.state.timerColor}>
                     {this.props.isRunning ? this.formatTime(this.props.displayTime) : "00:00:00"}
                 </h1>
-
-            </div >
-                
+            </div>
         );
     }
-}   
+}
