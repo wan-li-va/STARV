@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/STARV/static/css/main.b1b23419.chunk.css",
-    "main.js": "/STARV/static/js/main.9652dd2f.chunk.js",
-    "main.js.map": "/STARV/static/js/main.9652dd2f.chunk.js.map",
+    "main.js": "/STARV/static/js/main.be511f2b.chunk.js",
+    "main.js.map": "/STARV/static/js/main.be511f2b.chunk.js.map",
     "runtime-main.js": "/STARV/static/js/runtime-main.432cb3d8.js",
     "runtime-main.js.map": "/STARV/static/js/runtime-main.432cb3d8.js.map",
     "static/css/2.af3c1da9.chunk.css": "/STARV/static/css/2.af3c1da9.chunk.css",
     "static/js/2.be4119c3.chunk.js": "/STARV/static/js/2.be4119c3.chunk.js",
     "static/js/2.be4119c3.chunk.js.map": "/STARV/static/js/2.be4119c3.chunk.js.map",
     "index.html": "/STARV/index.html",
-    "precache-manifest.d95f5223ceea1a42600c871f35efae7e.js": "/STARV/precache-manifest.d95f5223ceea1a42600c871f35efae7e.js",
+    "precache-manifest.9b42dd6f17cbec75a4d85d8cfe6646df.js": "/STARV/precache-manifest.9b42dd6f17cbec75a4d85d8cfe6646df.js",
     "service-worker.js": "/STARV/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/STARV/static/css/2.af3c1da9.chunk.css.map",
     "static/css/main.b1b23419.chunk.css.map": "/STARV/static/css/main.b1b23419.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.af3c1da9.chunk.css",
     "static/js/2.be4119c3.chunk.js",
     "static/css/main.b1b23419.chunk.css",
-    "static/js/main.9652dd2f.chunk.js"
+    "static/js/main.be511f2b.chunk.js"
   ]
 }
