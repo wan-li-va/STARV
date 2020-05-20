@@ -58,9 +58,8 @@ export default class MainPanel extends Component {
                     displayTime={this.state.displayTime}
                     toggleRunning={this.toggleRunning}
                     setDisplayTime={this.setDisplayTime}
-                    displayTime={this.state.displayTime}
                     toggleStartButton={this.toggleStartButton}
-                    setDurationText={this.setDurationText} 
+                    setDurationText={this.setDurationText}
                     pastFasts={this.props.pastFasts} />
 
                 <OptionsPanel
