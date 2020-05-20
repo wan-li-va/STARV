@@ -19,12 +19,15 @@ export default class ScheduleButtons extends Component {
 
     // helper method; necessary because custom uses a different field
     setCustomTime = e => {
-        let val = parseFloat(e.value);
-        if (e.min <= val && e.max >= val) {
-            this.props.setFastLength(parseFloat(val))
-            this.props.toggleStartButton(false);
-        } else {
-            this.props.toggleStartButton(true);
+        if (e != null) {
+            let val = parseFloat(e.value);
+            if (e.min <= val && e.max >= val) {
+                this.props.setFastLength(val)
+                // this.props.setDisplayTime()
+                this.props.toggleStartButton(false);
+            } else {
+                this.props.toggleStartButton(true);
+            }
         }
     }
 
@@ -33,7 +36,7 @@ export default class ScheduleButtons extends Component {
         this.setState({ selectedRadio: (nowState != "custom") ? nowState : "Radio3" });
 
         if (nowState == "Radio3") {
-            this.setCustomTime(document.getElementById("quantity"))
+            this.setCustomTime(document.getElementById("custom"))
         }
         else {
             this.props.setFastLength(parseFloat(changeEvent.target.value));
@@ -67,7 +70,7 @@ export default class ScheduleButtons extends Component {
                 }>
                     <div id="customInput">
                         <input type="number" id="custom" name="quantity" min="5" max="23" placeholder={this.props.fastLength}
-                            disabled={this.props.isRunning} 
+                            disabled={this.props.isRunning}
                             onChange={this.handleCustomTime}
                             onClick={this.handleOptionChange} />
                         <br />
