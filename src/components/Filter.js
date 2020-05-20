@@ -4,8 +4,7 @@ import '../styling/Filter.css'
 export default class Filter extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-        }
+        this.state = {}
     }
 
     handleSelectChange = () => {
