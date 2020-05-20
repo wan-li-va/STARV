@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import { BsFillAwardFill } from "react-icons/bs";
 import { BsCheck } from "react-icons/bs";
 import { BsX } from "react-icons/bs";
+import '../styling/Entry.css'
 
 export default class Entry extends Component {
     constructor(props) {
@@ -40,20 +41,20 @@ export default class Entry extends Component {
 
     render() {
         return (
-            // <div className="Entry">
-            <div>
-                <Card bg={this.props.fast.wasSuccessful ? "success" : "danger"}>
-                    <Card.Body>
-                        {(this.props.fast.wasSuccessful) ? <div className="text-right"><BsFillAwardFill /></div> : ""}
-                        < Card.Text >
-                            <em>Date Completed:</em> {this.props.fast.dateMade} <br />
-                            <em>Duration:</em> {this.formatTime(this.props.fast.timePassed)} <br />
-                            <em>Success:</em> {this.isSuccess(this.props.fast.wasSuccessful)} {(this.props.fast.wasSuccessful) ? <BsCheck /> : <BsX />}
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </div >
-            // </div>
+            <div className="Entry">
+                <div>
+                    <Card bg={this.props.fast.wasSuccessful ? "success" : "danger"} className={this.props.fast.wasSuccessful ? "succeed" : "notsucceed"} >
+                        <Card.Body>
+                            {(this.props.fast.wasSuccessful) ? <div className="text-right"><BsFillAwardFill /></div> : ""}
+                            < Card.Text >
+                                <em>Date Completed:</em> {this.props.fast.dateMade} <br />
+                                <em>Duration:</em> {this.formatTime(this.props.fast.timePassed)} <br />
+                                <em>Success:</em> {this.isSuccess(this.props.fast.wasSuccessful)} {(this.props.fast.wasSuccessful) ? <BsCheck /> : <BsX />}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div >
+            </div>
         )
     }
 }
