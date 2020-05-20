@@ -39,6 +39,8 @@
     "gh-pages": "^2.2.0",
     "mathjs": "^7.0.0",
     "moment": "^2.25.3",
-    "react-bootstrap": "^1.0.1"
+    "react-bootstrap": "^1.0.1",
+    "react-bootstrap-icons": "^1.0.2-alpha3",
+    "react-icons": "^3.10.0"
   }
 }

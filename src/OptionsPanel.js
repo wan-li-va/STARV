@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
+import { BsFillPlayFill } from "react-icons/bs";
+import { BsFillStopFill } from "react-icons/bs";
 
 export default class OptionsPanel extends Component {
     constructor(props) {
@@ -56,8 +58,8 @@ export default class OptionsPanel extends Component {
 
     render() {
         return <div id="OptionsPanel">
-            <Button onClick={this.handleStartStop} disabled={this.state.buttonDisabled}>Start</Button>
-            <Button variant="danger" onClick={this.handleStartStop} disabled={!this.props.isRunning}>Stop</Button>
+            <Button onClick={this.handleStartStop} disabled={this.state.buttonDisabled}><BsFillPlayFill />Start</Button>
+            <Button variant="danger" onClick={this.handleStartStop} disabled={!this.props.isRunning}><BsFillStopFill /> Stop</Button>
             {/* <button onClick={this.handleStart}>hi</button> */}
 
             <div className="form-check">
