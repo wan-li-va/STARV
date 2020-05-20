@@ -85,7 +85,7 @@ export default class MainPanel extends Component {
                         "" :
                         (this.props.isTimerChanged) ?
                             <div>
-                                <img src={require("../images/congrats.gif")} alt="congrats" />
+                                <img id="congrats" src={require("../images/congrats.gif")} alt="congrats" />
                             </div>
                             :
                             <div></div>

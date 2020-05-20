@@ -18,9 +18,7 @@ export default class StatsPanel extends Component {
         if (this.props.pastFasts.length !== 0) {
             let successes = 0;
             for (let i = 0; i < this.props.pastFasts.length; i++) {
-                let fastInst = this.props.pastFasts[i];
-                let wasSucc = fastInst.wasSuccessful;
-                if (wasSucc) {
+                if (this.props.pastFasts[i].wasSuccessful) {
                     successes++;
                 }
             }
@@ -54,16 +52,28 @@ export default class StatsPanel extends Component {
                 })
             }
         }
+        else {
+            starvs.sort(function (fast1, fast2) {
+                return fast2.dateCompare - fast1.dateCompare;
+            })
+        }
         return starvs
     }
 
     render() {
-        let starvs = this.sortBy();
-        let newStarvs = starvs.map(fast => {
-            return (
-                <Entry key={fast.index.toString()} index={fast.index} fast={fast}> </Entry>
-            )
-        })
+        let starvs;
+        let newStarvs;
+        if (this.props.pastFasts.length === 0) {
+            newStarvs =
+                <img id="motivate" src={require("../images/motivate.gif")} alt="motivate" />
+        } else {
+            starvs = this.sortBy();
+            newStarvs = starvs.map(fast => {
+                return (
+                    <Entry key={fast.index.toString()} index={fast.index} fast={fast}> </Entry>
+                )
+            })
+        }
 
         return (
             <div className="StatsPanel">
