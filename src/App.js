@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './styling/App.css';
-import StatsPanel from "./components/StatsPanel.js"
-import MainPanel from "./components/MainPanel.js"
+import StatsPanel from "./components/StatsPanel.js";
+import MainPanel from "./components/MainPanel.js";
+import BadgePanel from "./components/BadgePanel.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Moment from 'moment';
 
@@ -10,7 +11,10 @@ export default class App extends Component {
     super(props);
     this.state = {
       pastFasts: [],
+      consecutiveFasts: 0,
+      numOfBadges: 0,
       isTimerChanged: false
+
     }
   }
 
@@ -26,6 +30,13 @@ export default class App extends Component {
       timePassed: diff,
       index: this.state.pastFasts.length,
     };
+
+    (instanceFast.wasSuccessful ?
+      this.setState({ consecutiveFasts: this.state.consecutiveFasts + 1 }) :
+      this.setState({ consecutiveFasts: 0, numOfBadges: 0 }));
+
+    if (this.state.consecutiveFasts === 10)
+      this.setState({ consecutiveFasts: 0, numOfBadges: this.state.numOfBadges + 1 });
 
     this.setState(prevState => {
       return ({
@@ -69,6 +80,9 @@ export default class App extends Component {
         <div className="MainPanel">
           <MainPanel saveFast={this.saveFast} pastFasts={this.state.pastFasts}
             isTimerChanged={this.state.isTimerChanged} />
+        </div>
+        <div className="BadgePanel">
+          <BadgePanel consecutiveFasts={this.state.consecutiveFasts} numOfBadges={this.state.numOfBadges} />
         </div>
       </div>
     );
