@@ -10,7 +10,9 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pastFasts: []
+      pastFasts: [],
+      consecutiveFasts: 0,
+      numOfBadges: 0
     }
   }
 
@@ -24,6 +26,13 @@ export default class App extends Component {
       timePassed: diff,
       index: this.state.pastFasts.length
     };
+
+    (instanceFast.wasSuccessful ?
+      this.setState({ consecutiveFasts: this.state.consecutiveFasts + 1 }) :
+      this.setState({ consecutiveFasts: 0 }));
+
+    if (this.state.consecutiveFasts === 10)
+      this.setState({ consecutiveFasts: 0, numOfBadges: this.state.numOfBadges + 1 });
 
     this.setState(prevState => {
       return ({
@@ -42,7 +51,7 @@ export default class App extends Component {
           <MainPanel saveFast={this.saveFast} pastFasts={this.state.pastFasts} />
         </div>
         <div className="BadgePanel">
-          <BadgePanel pastFasts={this.state.pastFasts} />
+          <BadgePanel consecutiveFasts={this.state.consecutiveFasts} numOfBadges={this.state.numOfBadges} />
         </div>
       </div>
     );
