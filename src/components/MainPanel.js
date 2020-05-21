@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Timer from './Timer';
 import QuotesPanel from "./QuotesPanel"
 import OptionsPanel from "./OptionsPanel"
+import Congrats from "./Congrats"
 import '../styling/MainPanel.css'
 export default class MainPanel extends Component {
     constructor(props) {
@@ -88,16 +89,18 @@ export default class MainPanel extends Component {
                     setFastLength={this.setFastLength}
                     isTimerChanged={this.props.isTimerChanged}
                 />
-                <QuotesPanel />
+
                 <div>
                     {(this.state.isRunning) ?
-                        "" :
+                        <QuotesPanel />
+                        :
                         (this.props.isTimerChanged) ?
-                            <div>
-                                <img id="congrats" src={require("../images/congrats.gif")} alt="congrats" />
-                            </div>
+                            <Congrats
+                                isRunning={this.state.isRunning}
+                                isTimerChanged={this.props.isTimerChanged}
+                            />
                             :
-                            <div></div>
+                            <QuotesPanel />
                     }
                 </div>
             </div>
