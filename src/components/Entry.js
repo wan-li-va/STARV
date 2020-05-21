@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Card from 'react-bootstrap/Card';
-import { BsFillAwardFill, BsCheck, BsX } from "react-icons/bs";
+import { BsFillAwardFill, BsX } from "react-icons/bs";
 import '../styling/Entry.css'
+import Button from "react-bootstrap/Button";
 
 export default class Entry extends Component {
     constructor(props) {
@@ -35,17 +36,32 @@ export default class Entry extends Component {
         }
     }
 
+    //FIX DELETE
+
     render() {
         return (
             <div className="Entry">
                 <div>
                     <Card bg={this.props.fast.wasSuccessful ? "success" : "danger"}  >
                         <Card.Body>
-                            {(this.props.fast.wasSuccessful) ? <div className="text-right"><BsFillAwardFill /></div> : ""}
+                            {(this.props.fast.wasSuccessful) ?
+                                <div className="header">
+                                    <div className="div1"><Button variant="outline-dark" size="sm"
+                                        onClick={() => this.props.deleteFast(this.props.fast)}>
+                                        <BsX /></Button></div>
+                                    <div className="div2"><BsFillAwardFill /></div>
+                                </div>
+                                :
+                                <div className="header">
+                                    <div className="div1"><Button variant="outline-dark" size="sm"
+                                        onClick={() => this.props.deleteFast(this.props.fast)}>
+                                        <BsX /></Button></div>
+                                </div>}
+                            <br />
                             < Card.Text >
                                 <em>Date Completed:</em> {this.props.fast.dateMade} <br />
                                 <em>Duration:</em> {this.formatTime(this.props.fast.timePassed)} <br />
-                                <em>Success:</em> {this.isSuccess(this.props.fast.wasSuccessful)} {(this.props.fast.wasSuccessful) ? <BsCheck /> : <BsX />}
+                                <em>Success:</em> {this.isSuccess(this.props.fast.wasSuccessful)}
                             </Card.Text>
                         </Card.Body>
                     </Card>
