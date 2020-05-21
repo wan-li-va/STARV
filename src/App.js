@@ -18,38 +18,14 @@ export default class App extends Component {
       fastJustCompleted: false,
       fastDB_ref: firebase.database().ref("fasts")
     }
-    
+
   }
 
   componentDidMount = () => {
-    // this.initLastFasts();
     this.state.fastDB_ref.once("value", snapshot => {
-      if(snapshot && snapshot.exists()) {
-      // console.log("list of things: " + snapshot.val());
-      // console.log("that was a " + (typeof snapshot.val()));
-      // console.log(snapshot.val[0]);
-      this.setState({pastFasts: snapshot.val()})
-      console.log("updating")
-      }
+      if (snapshot && snapshot.exists())
+        this.setState({ pastFasts: snapshot.val() })
     })
-  }
-  
-  initLastFasts() {
-    this.state.fastDB_ref.once("value", snapshot => {
-      if(snapshot && snapshot.exists()) {
-      // console.log("list of things: " + snapshot.val());
-      // console.log("that was a " + (typeof snapshot.val()));
-      // console.log(snapshot.val[0]);
-      this.setState({pastFasts: snapshot.val()})
-      console.log("updating")
-      }
-    })
-    // let new_arr = [];
-    // for (var key in Object.keys(this.state.pastFasts)) {
-    //   new_arr.push(this.state.pastFasts.key);
-    // }
-    // console.log("setting to " + new_arr)
-    // this.setState({pastFasts: new_arr})
   }
 
   toggleJustCompleted = () => {
