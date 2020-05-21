@@ -91,16 +91,14 @@ export default class MainPanel extends Component {
                 />
 
                 <QuotesPanel />
-                
-                {(this.props.fastJustCompleted) ?
-                            <Congrats
-                                isRunning={this.state.isRunning}
-                                fastJustCompleted={this.props.fastJustCompleted}
-                                toggleJustCompleted={this.props.toggleJustCompleted}
-                            />
-                            :
-                            ""}
 
+                {(this.props.fastJustCompleted) ?
+                    <Congrats
+                        isRunning={this.state.isRunning}
+                        fastJustCompleted={this.props.fastJustCompleted}
+                        toggleJustCompleted={this.props.toggleJustCompleted}
+                    />
+                    : ""}
             </div>
         )
     }

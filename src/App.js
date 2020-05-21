@@ -18,31 +18,14 @@ export default class App extends Component {
       fastJustCompleted: false,
       fastDB_ref: firebase.database().ref("fasts")
     }
-    
   }
 
   componentDidMount = () => {
-    // this.initLastFasts();
+    // initializes pastFasts to line up w/ Firebase
     this.state.fastDB_ref.once("value", snapshot => {
-      if(snapshot && snapshot.exists()) {
-      // console.log("list of things: " + snapshot.val());
-      // console.log("that was a " + (typeof snapshot.val()));
-      // console.log(snapshot.val[0]);
-      // this.setState({})
-      let pastFasts = snapshot.val();
-      let new_arr = pastFasts;
-      // console.log(pastFasts);
-      // console.log(pastFasts[1]);
-      // for (var key in Object.keys(pastFasts)) {
-      //   new_arr.push(pastFasts[key]);
-      //   console.log(pastFasts[key]);
-      // }
-      
-      // console.log("setting to " + new_arr + " which is a " + (Array.isArray(new_arr)))
-      // console.log(pastFasts)
-      // console.log("first element ")
-      // console.log(pastFasts[0])
-      this.setState({pastFasts: pastFasts})
+      if (snapshot && snapshot.exists()) {
+        let pastFasts = snapshot.val();
+        this.setState({ pastFasts: pastFasts })
       }
     })
   }

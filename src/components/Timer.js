@@ -9,8 +9,7 @@ let green = { color: 'green' };
 export default class Timer extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            // startTime: null, //start time null            
+        this.state = {       
             endTime: null,
             timerColor: blue
         };

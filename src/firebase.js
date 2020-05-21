@@ -21,7 +21,7 @@ export const signInWithGoogle = () => {
     console.log("stuff happened");
     auth.signInWithPopup(provider);
 }
-export function testF(){
+export function testF() {
     console.log("wefa")
 }
 export const auth = firebase.auth();
