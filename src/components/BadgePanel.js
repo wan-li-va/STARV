@@ -1,43 +1,14 @@
-import React, { Component } from 'react';
-import img from '../images/medal.png';
+import React from 'react';
 import '../styling/BadgePanel.css';
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+import ConsecFasts from './acheiements/ConsecFasts';
 
-const Badge = () => { return (<img src={img} alt="Gold Medal!!!!" width="100" height="100" />) }
-
-export default class BadgePanel extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        }
-    }
-
-    badgeHelper = () => {
-        if (this.props.numOfBadges > 0)
-            return (
-                <OverlayTrigger placement="left" overlay={
-                    <Tooltip>
-                        This badge is earned for doing 10 consecutive STARVs 
-                    </Tooltip>
-                }>
-                    <p>
-                        <Badge /> x{this.props.numOfBadges}
-                    </p>
-                </OverlayTrigger >
-            );
-    }
-
-    render() {
+const BadgePanel = (props) => {
         return (
             <div className="BadgePanel">
                 <h3 className="Achievements">Progress:</h3>
-                <text className="badgetext">
-                    You have {this.props.consecutiveFasts + (this.props.numOfBadges * 10)} successful STARVs in a row!!
-                </text>
-                {this.badgeHelper()}
+                <ConsecFasts consecutiveFasts={props.consecutiveFasts} numOfBadges={props.numOfBadges}/>
             </div>
         );
-    }
-
 }
+
+export default BadgePanel;
