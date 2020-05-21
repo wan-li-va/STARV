@@ -2,9 +2,6 @@ import React, { Component } from "react";
 
 import { random } from "mathjs"
 
-
-
-
 export default class QuotesPanel extends Component {
     constructor(props) {
         super(props);

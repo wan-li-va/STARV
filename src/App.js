@@ -13,9 +13,13 @@ export default class App extends Component {
       pastFasts: [],
       consecutiveFasts: 0,
       numOfBadges: 0,
-      isTimerChanged: false
+      fastJustCompleted: false
 
     }
+  }
+
+  toggleJustCompleted = () => {
+    this.setState({fastJustCompleted: (!this.state.fastJustCompleted)})
   }
 
   saveFast = (length, displayTime) => {
@@ -47,9 +51,9 @@ export default class App extends Component {
     })
 
     if (intDisp === 0) {
-      this.setState({ isTimerChanged: true })
+      this.setState({ fastJustCompleted: true })
     } else {
-      this.setState({ isTimerChanged: false })
+      this.setState({ fastJustCompleted: false })
     }
   }
 
@@ -81,7 +85,8 @@ export default class App extends Component {
         </div>
         <div className="MainPanel">
           <MainPanel saveFast={this.saveFast} pastFasts={this.state.pastFasts}
-            isTimerChanged={this.state.isTimerChanged} />
+            fastJustCompleted={this.state.fastJustCompleted}
+            toggleJustCompleted={this.toggleJustCompleted} />
         </div>
         <div className="BadgePanel">
           <BadgePanel consecutiveFasts={this.state.consecutiveFasts} numOfBadges={this.state.numOfBadges} />
