@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Entry from './Entry.js';
 import Filter from './Filter.js';
 import '../styling/StatsPanel.css';
+import Button from "react-bootstrap/Button";
+import { BsFillTrashFill } from "react-icons/bs";
 
 export default class StatsPanel extends Component {
     constructor(props) {
@@ -70,10 +72,11 @@ export default class StatsPanel extends Component {
             starvs = this.sortBy();
             newStarvs = starvs.map(fast => {
                 return (
-                    <Entry key={fast.index.toString()} index={fast.index} fast={fast}> </Entry>
+                    <Entry key={fast.index} index={fast.index} fast={fast} deleteFast={this.props.deleteFast}> </Entry>
                 )
             })
         }
+
 
         return (
             <div className="StatsPanel">
@@ -88,7 +91,15 @@ export default class StatsPanel extends Component {
                     {newStarvs}
                 </div>
 
-                <Filter pastFasts={this.props.pastFasts} handleSelectChange={this.handleSelectChange} />
+                <div>
+                    <Filter pastFasts={this.props.pastFasts} handleSelectChange={this.handleSelectChange} />
+                </div>
+
+                <div>
+                    <Button variant="danger" size="sm" onClick={this.props.deleteAll}>
+                        <BsFillTrashFill /> Delete All
+                    </Button>
+                </div>
             </div>
         )
     }
