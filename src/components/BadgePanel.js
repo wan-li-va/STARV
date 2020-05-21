@@ -2,13 +2,22 @@ import React, { Component } from 'react';
 import img from '../images/medal.png';
 import '../styling/BadgePanel.css'
 
-const Badge = () => { return (<div> <img src={img} alt="Gold Medal!!!!" width="100" height="100" /> </div>) }
+const Badge = () => { return (<img src={img} alt="Gold Medal!!!!" width="100" height="100" />) }
 
 export default class BadgePanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
         }
+    }
+
+    badgeHelper = () => {
+        if (this.props.numOfBadges > 0)
+            return (
+                <p>
+                    <Badge /> x{this.props.numOfBadges}
+                </p>
+            );
     }
 
     render() {
@@ -18,7 +27,7 @@ export default class BadgePanel extends Component {
                 <text className="badgetext">
                     You have {this.props.consecutiveFasts + (this.props.numOfBadges * 10)} successful STARVs in a row!!
                 </text>
-                    {Array(this.props.numOfBadges).fill(<Badge />)}
+                {this.badgeHelper()}
             </div>
         );
     }
