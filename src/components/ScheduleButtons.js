@@ -36,7 +36,7 @@ export default class ScheduleButtons extends Component {
         let nowState = changeEvent.target.id;
         this.setState({ selectedRadio: (nowState !== "custom") ? nowState : "Radio3" });
 
-        if (nowState === "Radio3") {
+        if (nowState === "Radio3" || nowState === "custom") {
             this.setCustomTime(document.getElementById("custom"))
         }
         else {
