@@ -1,5 +1,6 @@
 .Entry {
     display: flex;
+    width: 250px;
 }
 
 .header div {
@@ -22,4 +23,7 @@
 
 #notes{
     float: left;
+    word-break: break-all;
+    height: 60px;
+    overflow-y: auto;
 }
