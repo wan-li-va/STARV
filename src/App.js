@@ -11,30 +11,45 @@ import firebase from "./firebase.js"
 export default class App extends Component {
   constructor(props) {
     super(props);
-    const initRef = firebase.database().ref("fasts");
-    let pastFastsObj;
-    initRef.once("value").then(function (snapshot) {
-      pastFastsObj = snapshot.val();
-    })
-
     this.state = {
       pastFasts: [],
       consecutiveFasts: 0,
       numOfBadges: 0,
       fastJustCompleted: false,
-      fastListRef: initRef
+      fastDB_ref: firebase.database().ref("fasts")
     }
-
+    
   }
 
-  convertToArray(obj) {
-    let new_arr = [];
-    for (var key in Object.keys(obj)) {
-      new_arr.push(obj.key);
-    }
-    console.log("converting " + obj)
-    console.log("did stuff " + new_arr)
-    return new_arr
+  componentDidMount = () => {
+    // this.initLastFasts();
+    this.state.fastDB_ref.once("value", snapshot => {
+      if(snapshot && snapshot.exists()) {
+      // console.log("list of things: " + snapshot.val());
+      // console.log("that was a " + (typeof snapshot.val()));
+      // console.log(snapshot.val[0]);
+      this.setState({pastFasts: snapshot.val()})
+      console.log("updating")
+      }
+    })
+  }
+  
+  initLastFasts() {
+    this.state.fastDB_ref.once("value", snapshot => {
+      if(snapshot && snapshot.exists()) {
+      // console.log("list of things: " + snapshot.val());
+      // console.log("that was a " + (typeof snapshot.val()));
+      // console.log(snapshot.val[0]);
+      this.setState({pastFasts: snapshot.val()})
+      console.log("updating")
+      }
+    })
+    // let new_arr = [];
+    // for (var key in Object.keys(this.state.pastFasts)) {
+    //   new_arr.push(this.state.pastFasts.key);
+    // }
+    // console.log("setting to " + new_arr)
+    // this.setState({pastFasts: new_arr})
   }
 
   toggleJustCompleted = () => {
@@ -75,7 +90,7 @@ export default class App extends Component {
       this.setState({ fastJustCompleted: false })
     }
 
-    this.state.fastListRef.set(this.state.pastFasts)
+    this.state.fastDB_ref.set(this.state.pastFasts)
   }
 
   toggleEdit = (fastToEdit) => {
@@ -114,7 +129,7 @@ export default class App extends Component {
       return ({ pastFasts: newPastFasts });
     });
 
-    this.state.fastListRef.set(this.state.pastFasts)
+    this.state.fastDB_ref.set(this.state.pastFasts)
   }
 
   deleteAll = () => {
@@ -125,41 +140,9 @@ export default class App extends Component {
       })
     }
 
-    this.state.fastListRef.set(this.state.pastFasts)
+    this.state.fastDB_ref.set(this.state.pastFasts)
   }
 
-  test = () => {
-    // console.log(signInWithGoogle())
-    console.log("test");
-    const itemsRef = firebase.database().ref("fasts");
-    // const item = {
-    //   title: "test",
-    //   field: "testfield"
-    // }
-    // itemsRef.set("hi");
-    let pastFastsObj;
-    pastFastsObj = itemsRef.once("value").then(function (snapshot) {
-      console.log("list of things: " + snapshot.val());
-      console.log("that was a " + (typeof snapshot.val()));
-      console.log(snapshot.val[0]);
-      return snapshot.val();
-    })
-
-    componentDidMount = () => {
-      
-    }
-
-
-    console.log("pulled out " + pastFastsObj);
-    // console.log("testing " + pastFastsObj);
-
-    // const initRef = firebase.database().ref("fasts");
-    // let pastFastsObj = initRef.once("value").then(function (snapshot) {
-    //   return snapshot.val();
-    // })
-
-    // this.convertToArray(pastFastsObj);
-  }
   render() {
     return (
       <div className="App">
@@ -175,10 +158,6 @@ export default class App extends Component {
         <div className="BadgePanel">
           <BadgePanel consecutiveFasts={this.state.consecutiveFasts} numOfBadges={this.state.numOfBadges} />
         </div>
-        <div>
-          <button onClick={this.test}>TEST</button>
-        </div>
-
       </div>);
   }
 }
