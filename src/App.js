@@ -6,6 +6,10 @@ import BadgePanel from "./components/BadgePanel.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Moment from 'moment';
 
+import firebase from "./firebase.js"
+import signInWithGoogle from "./firebase.js"
+import testF from "./firebase.js"
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +23,7 @@ export default class App extends Component {
   }
 
   toggleJustCompleted = () => {
-    this.setState({fastJustCompleted: (!this.state.fastJustCompleted)})
+    this.setState({ fastJustCompleted: (!this.state.fastJustCompleted) })
   }
 
   saveFast = (length, displayTime) => {
@@ -75,6 +79,18 @@ export default class App extends Component {
 
   }
 
+  test = () => {
+    testF();
+    // console.log(signInWithGoogle())
+    // console.log("test");
+    // const itemsRef = firebase.database().ref("test");
+    // const item = {
+    //   title: "test",
+    //   field: "testfield"
+    // }
+
+    // itemsRef.push(item);
+  }
   render() {
     return (
       <div className="App">
@@ -89,8 +105,11 @@ export default class App extends Component {
         <div className="BadgePanel">
           <BadgePanel consecutiveFasts={this.state.consecutiveFasts} numOfBadges={this.state.numOfBadges} />
         </div>
-      </div>
-    );
+        <div>
+          <button onClick={() => testF()}>TEST</button>
+        </div>
+
+      </div>);
   }
 }
 
