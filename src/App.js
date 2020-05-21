@@ -142,7 +142,7 @@ export default class App extends Component {
     }
 
     console.log("deleting all")
-    this.state.fastDB_ref.set(this.state.pastFasts)
+    this.state.fastDB_ref.remove();
   }
 
   render() {
