@@ -29,6 +29,8 @@ export default class App extends Component {
       wasSuccessful: intDisp === 0, //if not successful, then it is false that diff === 0
       timePassed: diff,
       index: this.state.pastFasts.length,
+      notes: null,
+      isEditing: false,
     };
 
     (instanceFast.wasSuccessful ?

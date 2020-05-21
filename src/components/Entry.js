@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import Card from 'react-bootstrap/Card';
-import { BsFillAwardFill, BsX } from "react-icons/bs";
+import { BsFillAwardFill, BsX, BsPencil } from "react-icons/bs";
 import '../styling/Entry.css'
 import Button from "react-bootstrap/Button";
 
 export default class Entry extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+
+        }
     }
 
     formatTime(ms) {
@@ -36,8 +38,6 @@ export default class Entry extends Component {
         }
     }
 
-    //FIX DELETE
-
     render() {
         return (
             <div className="Entry">
@@ -63,6 +63,9 @@ export default class Entry extends Component {
                                 <em>Duration:</em> {this.formatTime(this.props.fast.timePassed)} <br />
                                 <em>Success:</em> {this.isSuccess(this.props.fast.wasSuccessful)}
                             </Card.Text>
+                            <Button className="edit" variant="outline-dark" size="sm">
+                                <BsPencil />
+                            </Button>
                         </Card.Body>
                     </Card>
                 </div >
