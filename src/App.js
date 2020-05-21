@@ -29,7 +29,7 @@ export default class App extends Component {
 
     (instanceFast.wasSuccessful ?
       this.setState({ consecutiveFasts: this.state.consecutiveFasts + 1 }) :
-      this.setState({ consecutiveFasts: 0 }));
+      this.setState({ consecutiveFasts: 0, numOfBadges: 0 }));
 
     if (this.state.consecutiveFasts === 10)
       this.setState({ consecutiveFasts: 0, numOfBadges: this.state.numOfBadges + 1 });

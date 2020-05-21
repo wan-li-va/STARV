@@ -10,16 +10,11 @@ export default class BadgePanel extends Component {
         }
     }
 
-    badgeHelper = () => {
-        if (this.props.consecutiveFasts === 0 && this.props.numOfBadges > 0)
-            return this.props.consecutiveFasts + 10
-    }
-
     render() {
         return (
             <div>
                 <text>
-                    You have {this.badgeHelper()} successful STARVs in a row!!
+                    You have {this.props.consecutiveFasts + (this.props.numOfBadges * 10)} successful STARVs in a row!!
                 </text>
                 {Array(this.props.numOfBadges).fill(<Badge />)}
             </div>
