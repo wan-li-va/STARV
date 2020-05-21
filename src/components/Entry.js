@@ -47,14 +47,14 @@ export default class Entry extends Component {
                             {(this.props.fast.wasSuccessful) ?
                                 <div className="header">
                                     <div className="div1"><Button variant="outline-dark" size="sm"
-                                        value={this.props.fast.index} onClick={this.props.deleteInst(this.props.fast)}>
+                                        onClick={() => this.props.deleteFast(this.props.fast)}>
                                         <BsX /></Button></div>
                                     <div className="div2"><BsFillAwardFill /></div>
                                 </div>
                                 :
                                 <div className="header">
                                     <div className="div1"><Button variant="outline-dark" size="sm"
-                                        value={this.props.fast.index} onClick={this.props.deleteInst(this.props.fast)}>
+                                        onClick={() => this.props.deleteFast(this.props.fast)}>
                                         <BsX /></Button></div>
                                 </div>}
                             <br />

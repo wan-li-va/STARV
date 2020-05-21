@@ -10,8 +10,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       pastFasts: [],
-      isTimerChanged: false,
-      id: 0
+      isTimerChanged: false
     }
   }
 
@@ -20,19 +19,12 @@ export default class App extends Component {
     let diff = (length * 60 * 60 * 1000) - intDisp;
     let dt = Date.now();
 
-    this.setState(prevState => {
-      return ({
-        id: prevState++
-      })
-    })
-
     let instanceFast = {
       dateMade: Moment().format("MMM DD, YYYY"),
       dateCompare: dt,
       wasSuccessful: intDisp === 0, //if not successful, then it is false that diff === 0
       timePassed: diff,
       index: this.state.pastFasts.length,
-      id: this.state.id
     };
 
     this.setState(prevState => {
@@ -48,13 +40,14 @@ export default class App extends Component {
     }
   }
 
-  deleteInst = instToDel => {
-    const newFastPast = this.state.pastFasts.filter(inst =>
-      instToDel.id !== inst.id
+  deleteFast = fastToDel => {
+    const newPastFasts = this.state.pastFasts.filter(fast =>
+      fastToDel.index !== fast.index
     );
-    this.setState(
-      { notesList: newFastPast }
-    )
+    this.setState(prevState => {
+      return ({ pastFasts: newPastFasts });
+    });
+
   }
 
   deleteAll = () => {
@@ -71,7 +64,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <div className="StatsPanel">
-          <StatsPanel pastFasts={this.state.pastFasts} deleteInst={this.deleteInst} deleteAll={this.deleteAll} />
+          <StatsPanel pastFasts={this.state.pastFasts} deleteFast={this.deleteFast} deleteAll={this.deleteAll} />
         </div>
         <div className="MainPanel">
           <MainPanel saveFast={this.saveFast} pastFasts={this.state.pastFasts}
