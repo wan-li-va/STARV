@@ -62,8 +62,7 @@ export default class Entry extends Component {
                         </Card.Text>
                         {(this.props.fast.isEditing) ?
                             <div>
-                                <input
-                                    type="text"
+                                <textarea
                                     name="notes"
                                     value={this.props.fast.notes}
                                     placeholder="Notes"
