@@ -34,14 +34,11 @@ export default class MainPanel extends Component {
     }
 
     setFastLength(new_length) {
-        if (!isNaN(new_length)) {
+        if (!isNaN(new_length)) { // rejects NaN inputs
             this.setState({
                 fastLength: new_length,
                 displayTime: new_length * 1000 * 60 * 60
             })
-        }
-        else {
-            console.log("input rejected")
         }
     }
 

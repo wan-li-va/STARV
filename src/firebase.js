@@ -15,15 +15,4 @@ const config = {
 
 firebase.initializeApp(config)
 
-const provider = new firebase.auth.GoogleAuthProvider();
-
-export const signInWithGoogle = () => {
-    console.log("stuff happened");
-    auth.signInWithPopup(provider);
-}
-export function testF() {
-    console.log("wefa")
-}
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
 export default firebase;

@@ -107,7 +107,6 @@ export default class App extends Component {
       return ({ pastFasts: newPastFasts });
     });
 
-    console.log("deleting")
     this.state.fastDB_ref.child(fastToDel.index).remove()
   }
 
@@ -119,7 +118,6 @@ export default class App extends Component {
       })
     }
 
-    console.log("deleting all")
     this.state.fastDB_ref.remove();
   }
 
