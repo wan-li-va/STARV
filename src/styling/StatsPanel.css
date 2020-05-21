@@ -1,7 +1,5 @@
 .StatsPanel {
     display: flex;
-    outline: pink solid 5px;
-    outline-offset: 10px;
     flex: 3;
 }
 

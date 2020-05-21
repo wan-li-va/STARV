@@ -6,6 +6,8 @@ import BadgePanel from "./components/BadgePanel.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Moment from 'moment';
 
+import firebase from "./firebase.js"
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -14,9 +16,18 @@ export default class App extends Component {
       consecutiveFasts: 0,
       numOfBadges: 0,
       fastJustCompleted: false,
-      consecFastHelper: 0
-
+      fastDB_ref: firebase.database().ref("fasts")
     }
+  }
+
+  componentDidMount = () => {
+    // initializes pastFasts to line up w/ Firebase
+    this.state.fastDB_ref.once("value", snapshot => {
+      if (snapshot && snapshot.exists()) {
+        let pastFasts = snapshot.val();
+        this.setState({ pastFasts: pastFasts })
+      }
+    })
   }
 
   toggleJustCompleted = () => {
@@ -56,6 +67,8 @@ export default class App extends Component {
     } else {
       this.setState({ fastJustCompleted: false })
     }
+
+    this.state.fastDB_ref.set(this.state.pastFasts)
   }
 
   toggleEdit = (fastToEdit) => {
@@ -94,6 +107,7 @@ export default class App extends Component {
       return ({ pastFasts: newPastFasts });
     });
 
+    this.state.fastDB_ref.child(fastToDel.index).remove()
   }
 
   deleteAll = () => {
@@ -104,6 +118,7 @@ export default class App extends Component {
       })
     }
 
+    this.state.fastDB_ref.remove();
   }
 
   render() {
@@ -121,8 +136,6 @@ export default class App extends Component {
         <div className="BadgePanel">
           <BadgePanel consecutiveFasts={this.state.consecutiveFasts} numOfBadges={this.state.numOfBadges} />
         </div>
-      </div>
-    );
+      </div>);
   }
 }
-

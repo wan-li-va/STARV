@@ -23,7 +23,7 @@
   margin-right: 2vw;
   border-radius: 25px;
   outline: lightblue solid 5px;
-  outline-offset: 10px;
+  outline-offset: 1.5vh;
 }
 
 .StatsPanel {
@@ -32,6 +32,8 @@
   flex: 3;
   align-items: center;
   background-color: pink;
+  outline: pink solid 5px;
+  outline-offset: 1.5vh;
   opacity: 0.93;
   margin-top: 5vh;
   margin-bottom: 5vh;
@@ -49,7 +51,7 @@
   padding-right: 10%;
   margin-bottom: 5vh;
   outline: 3px solid red;
-  outline-offset: 8px;
+  outline-offset: 1vh;
   border: 10px solid red;
   margin-top: 3vh;
 }

@@ -24,7 +24,6 @@ export default class ScheduleButtons extends Component {
             let val = parseFloat(e.value);
             if (e.min <= val && e.max >= val) {
                 this.props.setFastLength(val)
-                // this.props.setDisplayTime()
                 this.props.toggleStartButton(false);
             } else {
                 this.props.toggleStartButton(true);
@@ -51,19 +50,19 @@ export default class ScheduleButtons extends Component {
                 <input type="radio" name="Radios" id="Radio1" value={16}
                     checked={this.state.selectedRadio === "Radio1"} onClick={this.handleOptionChange}
                     disabled={this.props.isRunning} />
-                    <label className="radioLabel"> 16:8 </label>
+                <label className="radioLabel"> 16:8 </label>
             </div>
             <div className="radioButton">
                 <input type="radio" name="Radios" id="Radio2" value={18}
                     checked={this.state.selectedRadio === "Radio2"} onClick={this.handleOptionChange}
                     disabled={this.props.isRunning} />
-                    <label className="radioLabel"> 18:6 </label>
+                <label className="radioLabel"> 18:6 </label>
             </div>
             <div className="radioButton" id="customSelect">
                 <input type="radio" name="Radios" id="Radio3" value="option3"
                     checked={this.state.selectedRadio === "Radio3"} onClick={this.handleOptionChange}
                     disabled={this.props.isRunning} />
-                    <label className="radioLabel">Custom</label>
+                <label className="radioLabel">Custom</label>
                 <OverlayTrigger placement="right" overlay={
                     <Tooltip>
                         Choose intended fasting hours between 5 and 23, inclusive.

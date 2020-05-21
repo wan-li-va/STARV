@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import Moment from 'moment';
-import { BsFillPlayFill } from "react-icons/bs";
-import { BsFillStopFill } from "react-icons/bs";
+import { BsFillPlayFill, BsFillStopFill } from "react-icons/bs";
 
 import ScheduleButtons from "./ScheduleButtons";
 
@@ -10,9 +9,7 @@ export default class OptionsPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {}
-
         this.handleStartStop = this.handleStartStop.bind(this);
-
     }
 
     handleStartStop = () => {
@@ -26,7 +23,6 @@ export default class OptionsPanel extends Component {
 
             this.props.toggleStartButton(false);
         } else {
-            // this.setState({startTime: Date.now()})
             this.props.setDisplayTime(this.props.fastLength * 60 * 60 * 1000);
             this.props.toggleRunning();
             this.props.toggleStartButton(true);
