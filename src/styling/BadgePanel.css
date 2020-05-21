@@ -7,11 +7,12 @@
     align-items: center;
     margin-top: 5vh;
     margin-bottom: 5vh;
-    background-color: lightgreen;
-    outline: lightgreen solid 5px;
-    outline-offset: 10px;
+    background-color: lightgrey;
+    outline: lightgrey solid 5px;
+    outline-offset: 1.5vh;
     padding-left: 0.5vw;
-    opacity: 0.93
+    opacity: 0.93;
+    border-radius: 25px;
   }
   
   .Achievements {
