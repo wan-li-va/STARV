@@ -72,11 +72,12 @@ export default class StatsPanel extends Component {
             starvs = this.sortBy();
             newStarvs = starvs.map(fast => {
                 return (
-                    <Entry key={fast.index} index={fast.index} fast={fast} deleteFast={this.props.deleteFast}> </Entry>
+                    <Entry key={fast.index} index={fast.index} fast={fast} deleteFast={this.props.deleteFast}
+                        toggleEdit={this.props.toggleEdit} editNotes={this.props.editNotes}
+                    ></Entry>
                 )
             })
         }
-
 
         return (
             <div className="StatsPanel">

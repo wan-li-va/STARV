@@ -17,3 +17,7 @@
 .edit {
     float: right;
 }
+
+#notes{
+    float: left;
+}

@@ -7,9 +7,7 @@ import Button from "react-bootstrap/Button";
 export default class Entry extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-
-        }
+        this.state = {}
     }
 
     formatTime(ms) {
@@ -41,34 +39,55 @@ export default class Entry extends Component {
     render() {
         return (
             <div className="Entry">
-                <div>
-                    <Card bg={this.props.fast.wasSuccessful ? "success" : "danger"}  >
-                        <Card.Body>
-                            {(this.props.fast.wasSuccessful) ?
-                                <div className="header">
-                                    <div className="div1"><Button variant="outline-dark" size="sm"
-                                        onClick={() => this.props.deleteFast(this.props.fast)}>
-                                        <BsX /></Button></div>
-                                    <div className="div2"><BsFillAwardFill /></div>
+                <Card bg={this.props.fast.wasSuccessful ? "success" : "danger"}>
+                    <Card.Body>
+                        {(this.props.fast.wasSuccessful) ?
+                            <div className="header">
+                                <div className="div1"><Button variant="outline-dark" size="sm"
+                                    onClick={() => this.props.deleteFast(this.props.fast)}>
+                                    <BsX /></Button></div>
+                                <div className="div2"><BsFillAwardFill /></div>
+                            </div>
+                            :
+                            <div className="header">
+                                <div className="div1"><Button variant="outline-dark" size="sm"
+                                    onClick={() => this.props.deleteFast(this.props.fast)}>
+                                    <BsX /></Button></div>
+                            </div>}
+                        <br />
+                        < Card.Text >
+                            <em>Date Completed:</em> {this.props.fast.dateMade} <br />
+                            <em>Duration:</em> {this.formatTime(this.props.fast.timePassed)} <br />
+                            <em>Success:</em> {this.isSuccess(this.props.fast.wasSuccessful)}
+                        </Card.Text>
+                        {(this.props.fast.isEditing) ?
+                            <div>
+                                <input
+                                    type="text"
+                                    name="notes"
+                                    value={this.props.fast.notes}
+                                    placeholder="Notes"
+                                    onChange={(e) => this.props.editNotes(e, this.props.fast)}
+                                    id="editNotes"
+                                />
+                                <br />
+                                <Button className="edit" variant="outline-dark" size="sm"
+                                    onClick={() => this.props.toggleEdit(this.props.fast)}>
+                                    Save
+                                </Button>
+                            </div>
+                            :
+                            <div>
+                                <div id="notes">
+                                    <em>Notes:</em> {this.props.fast.notes}
                                 </div>
-                                :
-                                <div className="header">
-                                    <div className="div1"><Button variant="outline-dark" size="sm"
-                                        onClick={() => this.props.deleteFast(this.props.fast)}>
-                                        <BsX /></Button></div>
-                                </div>}
-                            <br />
-                            < Card.Text >
-                                <em>Date Completed:</em> {this.props.fast.dateMade} <br />
-                                <em>Duration:</em> {this.formatTime(this.props.fast.timePassed)} <br />
-                                <em>Success:</em> {this.isSuccess(this.props.fast.wasSuccessful)}
-                            </Card.Text>
-                            <Button className="edit" variant="outline-dark" size="sm">
-                                <BsPencil />
-                            </Button>
-                        </Card.Body>
-                    </Card>
-                </div >
+                                <Button className="edit" variant="outline-dark" size="sm"
+                                    onClick={() => this.props.toggleEdit(this.props.fast)}>
+                                    <BsPencil />
+                                </Button>
+                            </div>}
+                    </Card.Body>
+                </Card>
             </div>
         )
     }

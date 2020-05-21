@@ -19,7 +19,7 @@ export default class App extends Component {
   }
 
   toggleJustCompleted = () => {
-    this.setState({fastJustCompleted: (!this.state.fastJustCompleted)})
+    this.setState({ fastJustCompleted: (!this.state.fastJustCompleted) })
   }
 
   saveFast = (length, displayTime) => {
@@ -57,6 +57,34 @@ export default class App extends Component {
     }
   }
 
+  toggleEdit = (fastToEdit) => {
+    this.setState({
+      pastFasts: this.state.pastFasts.map(fast => {
+        if (fast.index === fastToEdit.index) {
+          return ({
+            ...fast,
+            isEditing: !fast.isEditing
+          })
+        }
+        return fast;
+      })
+    });
+  }
+
+  editNotes = (event, fastEdit) => {
+    this.setState({
+      pastFasts: this.state.pastFasts.map(fast => {
+        if (fast.index === fastEdit.index) {
+          return ({
+            ...fast,
+            notes: event.target.value
+          })
+        }
+        return fast;
+      })
+    });
+  }
+
   deleteFast = fastToDel => {
     const newPastFasts = this.state.pastFasts.filter(fast =>
       fastToDel.index !== fast.index
@@ -81,7 +109,8 @@ export default class App extends Component {
     return (
       <div className="App">
         <div className="StatsPanel">
-          <StatsPanel pastFasts={this.state.pastFasts} deleteFast={this.deleteFast} deleteAll={this.deleteAll} />
+          <StatsPanel pastFasts={this.state.pastFasts} deleteFast={this.deleteFast} deleteAll={this.deleteAll}
+            toggleEdit={this.toggleEdit} editNotes={this.editNotes} />
         </div>
         <div className="MainPanel">
           <MainPanel saveFast={this.saveFast} pastFasts={this.state.pastFasts}
