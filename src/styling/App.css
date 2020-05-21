@@ -4,6 +4,8 @@
   flex-direction: row;
   height: 100vh;
   background-color: whitesmoke;
+  background-image: url(../images/bg.jpg);
+  background-size: auto;
 }
 
 .MainPanel {
@@ -14,6 +16,7 @@
   align-items: center;
   margin-right: 5vw;
   background-color: lightblue;
+  opacity: 0.93;
   margin-top: 5vh;
   margin-bottom: 5vh;
   margin-left: 5vh;
@@ -31,6 +34,7 @@
   margin-left: 5vw;
   margin-right: 5vw;
   background-color: pink;
+  opacity: 0.93;
   margin-top: 5vh;
   margin-bottom: 5vh;
   margin-left: 10vh;
