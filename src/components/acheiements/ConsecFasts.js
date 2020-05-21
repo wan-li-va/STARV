@@ -33,7 +33,7 @@ export default class ConsecFasts extends Component {
         return (
             <div>
                 <text className="badgetext">
-                    You have {this.props.consecutiveFasts + (this.props.numOfBadges * 10)} successful STARVs in a row!!
+                    You have {this.props.consecutiveFasts} successful STARVs in a row!!
                 </text>
                 {this.badgeHelper()}
             </div>
