@@ -1,0 +1,23 @@
+.BadgePanel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 2vw;
+    margin-left: 1vw;
+    align-items: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    background-color: lightgreen;
+    outline: lightgreen solid 5px;
+    outline-offset: 10px;
+    padding-left: 0.5vw;
+  }
+  
+  .Achievements {
+    font-size: large;
+  }
+  
+  .badgetext {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+  }
