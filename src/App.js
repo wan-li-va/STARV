@@ -33,7 +33,7 @@ export default class App extends Component {
       }
     })
   }
-  
+
   initLastFasts() {
     this.state.fastDB_ref.once("value", snapshot => {
       if(snapshot && snapshot.exists()) {
@@ -129,7 +129,8 @@ export default class App extends Component {
       return ({ pastFasts: newPastFasts });
     });
 
-    this.state.fastDB_ref.set(this.state.pastFasts)
+    console.log("deleting")
+    this.state.fastDB_ref.child(fastToDel.index).remove()
   }
 
   deleteAll = () => {
@@ -140,6 +141,7 @@ export default class App extends Component {
       })
     }
 
+    console.log("deleting all")
     this.state.fastDB_ref.set(this.state.pastFasts)
   }
 
