@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styling/BadgePanel.css';
-import ConsecFasts from './acheiements/ConsecFasts';
+import ConsecFasts from './acheivements/ConsecFasts';
 
 const BadgePanel = (props) => {
         return (
