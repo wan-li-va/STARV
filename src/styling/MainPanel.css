@@ -1,5 +1,6 @@
 .MainPanel {
     display: flex;
+    flex: 5;
 }
 
 .subtitle {
@@ -28,7 +29,7 @@
 .Quotes {
     display: flex;
     height: 13vh;
-    width: 50vw;
+    width: 40vw;
     border: 3px solid grey;
     align-items: center;
     justify-content: center;

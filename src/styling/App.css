@@ -3,21 +3,24 @@
   display: flex;
   flex-direction: row;
   height: 100vh;
+  width: 100vw;
   background-color: whitesmoke;
+  background-image: url(../images/bg.jpg);
+  background-size: auto;
 }
 
 .MainPanel {
   display: flex;
   flex-direction: column;
-  flex: 2;
+  flex: 5;
   justify-content: center;
   align-items: center;
-  margin-right: 5vw;
   background-color: lightblue;
+  opacity: 0.93;
   margin-top: 5vh;
   margin-bottom: 5vh;
-  margin-left: 5vh;
-  margin-right: 10vh;
+  margin-left: 2vw;
+  margin-right: 2vw;
   border-radius: 25px;
   outline: lightblue solid 5px;
   outline-offset: 10px;
@@ -26,15 +29,14 @@
 .StatsPanel {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 3;
   align-items: center;
-  margin-left: 5vw;
-  margin-right: 5vw;
   background-color: pink;
+  opacity: 0.93;
   margin-top: 5vh;
   margin-bottom: 5vh;
-  margin-left: 10vh;
-  margin-right: 5vh;
+  margin-left: 2vw;
+  margin-right: 1vw;
   border-radius: 25px;
 }
 
