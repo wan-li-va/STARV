@@ -50,7 +50,7 @@ export default class MainPanel extends Component {
     }
 
     changeTimer = (changed) => {
-        this.setState({ isTimerChanged: changed })
+        this.setState({ fastJustCompleted: changed })
     }
 
     render() {
@@ -87,22 +87,20 @@ export default class MainPanel extends Component {
                     toggleStartButton={this.toggleStartButton}
                     toggleRunning={this.toggleRunning}
                     setFastLength={this.setFastLength}
-                    isTimerChanged={this.props.isTimerChanged}
+                    fastJustCompleted={this.props.fastJustCompleted}
                 />
 
-                <div>
-                    {(this.state.isRunning) ?
-                        <QuotesPanel />
-                        :
-                        (this.props.isTimerChanged) ?
+                <QuotesPanel />
+                
+                {(this.props.fastJustCompleted) ?
                             <Congrats
                                 isRunning={this.state.isRunning}
-                                isTimerChanged={this.props.isTimerChanged}
+                                fastJustCompleted={this.props.fastJustCompleted}
+                                toggleJustCompleted={this.props.toggleJustCompleted}
                             />
                             :
-                            <QuotesPanel />
-                    }
-                </div>
+                            ""}
+
             </div>
         )
     }
