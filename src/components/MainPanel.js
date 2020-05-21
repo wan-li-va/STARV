@@ -9,7 +9,7 @@ export default class MainPanel extends Component {
         this.state = {
             isRunning: false, //tells whether timer is started
             fastLength: 1 / 60 / 30, // length of fast in hours; must be changed later to 16
-            displayTime: 0,  // time to display on timer; ms left to count down
+            displayTime: 2000,  // time to display on timer; ms left to count down
             startDisabled: false,
             durationText: "you have yet to complete a fast", // default value, gets changed immediately after success
         }
@@ -33,13 +33,24 @@ export default class MainPanel extends Component {
     }
 
     setFastLength(new_length) {
-        this.setState({ fastLength: new_length })
+        if (!isNaN(new_length)) {
+            this.setState({
+                fastLength: new_length,
+                displayTime: new_length * 1000 * 60 * 60
+            })
+        }
+        else {
+            console.log("input rejected")
+        }
     }
 
     setDisplayTime(new_time) {
         this.setState({ displayTime: parseFloat(new_time) })
     }
 
+    changeTimer = (changed) => {
+        this.setState({ isTimerChanged: changed })
+    }
 
     render() {
         return (
@@ -50,6 +61,7 @@ export default class MainPanel extends Component {
                 <br />
                     <i>A dieting solution for the 21st century</i>
                 </p>
+
                 <Timer
                     saveFast={this.props.saveFast}
                     isRunning={this.state.isRunning}
@@ -59,7 +71,8 @@ export default class MainPanel extends Component {
                     setDisplayTime={this.setDisplayTime}
                     toggleStartButton={this.toggleStartButton}
                     setDurationText={this.setDurationText}
-                    pastFasts={this.props.pastFasts} />
+                    pastFasts={this.props.pastFasts}
+                />
 
                 <OptionsPanel
                     fastLength={this.state.fastLength}
@@ -72,8 +85,21 @@ export default class MainPanel extends Component {
                     startDisabled={this.state.startDisabled}
                     toggleStartButton={this.toggleStartButton}
                     toggleRunning={this.toggleRunning}
-                    setFastLength={this.setFastLength} />
+                    setFastLength={this.setFastLength}
+                    isTimerChanged={this.props.isTimerChanged}
+                />
                 <QuotesPanel />
+                <div>
+                    {(this.state.isRunning) ?
+                        "" :
+                        (this.props.isTimerChanged) ?
+                            <div>
+                                <img id="congrats" src={require("../images/congrats.gif")} alt="congrats" />
+                            </div>
+                            :
+                            <div></div>
+                    }
+                </div>
             </div>
         )
     }

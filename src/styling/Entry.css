@@ -2,6 +2,14 @@
     display: flex;
 }
 
-.text-right {
-    margin-top: -2vh;
+.header div {
+    display: inline-block;
+}
+
+.div1 {
+    float: left;
+}
+
+.div2 {
+    float: right;
 }

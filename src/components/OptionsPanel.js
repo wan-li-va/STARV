@@ -38,11 +38,13 @@ export default class OptionsPanel extends Component {
             <Button onClick={this.handleStartStop} disabled={this.props.startDisabled}><BsFillPlayFill />Start</Button>
             <Button variant="danger" onClick={this.handleStartStop} disabled={!this.props.isRunning}><BsFillStopFill />Stop</Button>
 
-            <ScheduleButtons 
-            setFastLength={this.props.setFastLength}
-            toggleStartButton={this.props.toggleStartButton}
-            isRunning={this.props.isRunning}
-            durationText={this.props.durationText} />
+            <ScheduleButtons
+                setFastLength={this.props.setFastLength}
+                toggleStartButton={this.props.toggleStartButton}
+                isRunning={this.props.isRunning}
+                durationText={this.props.durationText} />
+
+            <div className="timeSince">Time since last fast: {this.props.durationText} </div>
         </div>
     }
 }

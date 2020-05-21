@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Entry from './Entry.js';
 import Filter from './Filter.js';
 import '../styling/StatsPanel.css';
+import Button from "react-bootstrap/Button";
+import { BsFillTrashFill } from "react-icons/bs";
 
 export default class StatsPanel extends Component {
     constructor(props) {
@@ -18,9 +20,7 @@ export default class StatsPanel extends Component {
         if (this.props.pastFasts.length !== 0) {
             let successes = 0;
             for (let i = 0; i < this.props.pastFasts.length; i++) {
-                let fastInst = this.props.pastFasts[i];
-                let wasSucc = fastInst.wasSuccessful;
-                if (wasSucc) {
+                if (this.props.pastFasts[i].wasSuccessful) {
                     successes++;
                 }
             }
@@ -54,16 +54,29 @@ export default class StatsPanel extends Component {
                 })
             }
         }
+        else {
+            starvs.sort(function (fast1, fast2) {
+                return fast2.dateCompare - fast1.dateCompare;
+            })
+        }
         return starvs
     }
 
     render() {
-        let starvs = this.sortBy();
-        let newStarvs = starvs.map(fast => {
-            return (
-                <Entry key={fast.index.toString()} index={fast.index} fast={fast}> </Entry>
-            )
-        })
+        let starvs;
+        let newStarvs;
+        if (this.props.pastFasts.length === 0) {
+            newStarvs =
+                <img id="motivate" src={require("../images/motivate.gif")} alt="motivate" />
+        } else {
+            starvs = this.sortBy();
+            newStarvs = starvs.map(fast => {
+                return (
+                    <Entry key={fast.index} index={fast.index} fast={fast} deleteFast={this.props.deleteFast}> </Entry>
+                )
+            })
+        }
+
 
         return (
             <div className="StatsPanel">
@@ -78,7 +91,15 @@ export default class StatsPanel extends Component {
                     {newStarvs}
                 </div>
 
-                <Filter pastFasts={this.props.pastFasts} handleSelectChange={this.handleSelectChange} />
+                <div>
+                    <Filter pastFasts={this.props.pastFasts} handleSelectChange={this.handleSelectChange} />
+                </div>
+
+                <div>
+                    <Button variant="danger" size="sm" onClick={this.props.deleteAll}>
+                        <BsFillTrashFill /> Delete All
+                    </Button>
+                </div>
             </div>
         )
     }
