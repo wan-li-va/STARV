@@ -13,7 +13,7 @@ export default class BadgePanel extends Component {
     render() {
         return (
             <div>
-                <text>
+                <text style={{ color: "white" }}>
                     You have {this.props.consecutiveFasts + (this.props.numOfBadges * 10)} successful STARVs in a row!!
                 </text>
                 {Array(this.props.numOfBadges).fill(<Badge />)}
