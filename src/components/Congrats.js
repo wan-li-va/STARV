@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+
 export default class Congrats extends Component {
     constructor(props) {
         super(props);
@@ -8,10 +9,12 @@ export default class Congrats extends Component {
             modalActive: true,
         }
     }
+
     handleClose = () => {
         this.setState({ modalActive: false });
         this.props.toggleJustCompleted()
     }
+
     handleShow = () => this.setState({ modalActive: true });
 
     render() {

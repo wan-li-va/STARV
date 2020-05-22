@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import img from '../../images/medal.png';
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+
+import img from '../../images/medal.png';
 
 const Badge = () => { return (<img src={img} alt="Gold Medal!!!!" width="100" height="100" />) }
 
@@ -39,5 +40,4 @@ export default class ConsecFasts extends Component {
             </div>
         );
     }
-
 }

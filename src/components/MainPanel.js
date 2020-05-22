@@ -1,53 +1,51 @@
 import React, { Component } from "react";
+
+import '../styling/MainPanel.css';
 import Timer from './Timer';
-import QuotesPanel from "./QuotesPanel"
-import OptionsPanel from "./OptionsPanel"
-import Congrats from "./Congrats"
-import '../styling/MainPanel.css'
+import QuotesPanel from "./QuotesPanel";
+import OptionsPanel from "./OptionsPanel";
+import Congrats from "./Congrats";
+
 export default class MainPanel extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            isRunning: false, //tells whether timer is started
-            fastLength: 1 / 60 / 30, // length of fast in hours; must be changed later to 16
-            displayTime: 2000,  // time to display on timer; ms left to count down
+            isRunning: false,
+            fastLength: 1 / 60 / 30,
+            displayTime: 2000,
             startDisabled: false,
-            durationText: "you have yet to complete a fast", // default value, gets changed immediately after success
+            durationText: "you have yet to complete a fast",
         }
-        this.toggleRunning = this.toggleRunning.bind(this)
-        this.setFastLength = this.setFastLength.bind(this)
-        this.setDisplayTime = this.setDisplayTime.bind(this)
-        this.setDurationText = this.setDurationText.bind(this);
-        this.toggleStartButton = this.toggleStartButton.bind(this)
     }
 
-    toggleStartButton(b) {
+    toggleStartButton = b => {
         this.setState({ startDisabled: b })
     }
 
-    setDurationText(new_text) {
+    setDurationText = new_text => {
         this.setState({ durationText: new_text })
     }
 
-    toggleRunning() {
+    toggleRunning = () => {
         this.setState({ isRunning: (!this.state.isRunning) })
     }
 
-    setFastLength(new_length) {
-        if (!isNaN(new_length)) { // rejects NaN inputs
+    setFastLength = new_length => {
+        if (!isNaN(new_length)) // rejects NaN inputs
             this.setState({
                 fastLength: new_length,
                 displayTime: new_length * 1000 * 60 * 60
-            })
-        }
+            });
     }
 
-    setDisplayTime(new_time) {
-        this.setState({ displayTime: parseFloat(new_time) })
+    setDisplayTime = new_time => {
+        this.setState({
+            displayTime: parseFloat(new_time)
+        });
     }
 
     changeTimer = (changed) => {
-        this.setState({ fastJustCompleted: changed })
+        this.setState({ fastJustCompleted: changed });
     }
 
     render() {
@@ -87,16 +85,12 @@ export default class MainPanel extends Component {
                     fastJustCompleted={this.props.fastJustCompleted}
                     pastFasts={this.props.pastFasts}
                 />
-
                 <QuotesPanel />
-
                 {(this.props.fastJustCompleted) ?
                     <Congrats
                         isRunning={this.state.isRunning}
                         fastJustCompleted={this.props.fastJustCompleted}
-                        toggleJustCompleted={this.props.toggleJustCompleted}
-                    />
-                    : ""}
+                        toggleJustCompleted={this.props.toggleJustCompleted} /> : ""}
             </div>
         )
     }
