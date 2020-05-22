@@ -85,6 +85,7 @@ export default class MainPanel extends Component {
                     toggleRunning={this.toggleRunning}
                     setFastLength={this.setFastLength}
                     fastJustCompleted={this.props.fastJustCompleted}
+                    pastFasts={this.props.pastFasts}
                 />
 
                 <QuotesPanel />
