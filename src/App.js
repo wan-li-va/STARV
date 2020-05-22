@@ -51,11 +51,11 @@ export default class App extends Component {
     };
 
     (instanceFast.wasSuccessful ?
-      this.setState({ consecutiveFasts: this.state.consecutiveFasts + 1, consecFastHelper: this.state.consecFastHelper +1 }) :
-      this.setState({ consecutiveFasts: 0, consecFastHelper: 0 }));
+      this.setState({ consecutiveFasts: this.state.consecutiveFasts + 1 }) :
+      this.setState({ consecutiveFasts: 0 }));
 
-    if (this.state.consecFastHelper === 10)
-      this.setState({ consecFastHelper: 0, numOfBadges: this.state.numOfBadges + 1 });
+    if (Math.floor(this.state.consecutiveFasts / 10) === Math.ceil(this.state.consecutiveFasts / 10))
+      this.setState({ numOfBadges: this.state.numOfBadges + 1 });
 
     this.setState(prevState => {
       return ({
