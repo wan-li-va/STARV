@@ -54,7 +54,7 @@ export default class App extends Component {
       this.setState({ consecutiveFasts: this.state.consecutiveFasts + 1 }) :
       this.setState({ consecutiveFasts: 0 }));
 
-    if (Math.floor(this.state.consecutiveFasts / 10) === Math.ceil(this.state.consecutiveFasts / 10))
+    if (Math.floor(this.state.consecutiveFasts / 10) === Math.ceil(this.state.consecutiveFasts / 10) && this.state.consecutiveFasts !== 0)
       this.setState({ numOfBadges: this.state.numOfBadges + 1 });
 
     this.setState(prevState => {
