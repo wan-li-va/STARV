@@ -16,7 +16,8 @@ export default class App extends Component {
       consecutiveFasts: 0,
       numOfBadges: 0,
       fastJustCompleted: false,
-      fastDB_ref: firebase.database().ref("fasts")
+      fastDB_ref: firebase.database().ref("fasts"),
+      consecFastHelper: 0
     }
   }
 
