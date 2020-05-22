@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+
 import '../styling/ScheduleButtons.css';
 
 export default class ScheduleButtons extends Component {
@@ -9,8 +10,6 @@ export default class ScheduleButtons extends Component {
         this.state = {
             selectedRadio: "Radio1"
         }
-        this.handleOptionChange = this.handleOptionChange.bind(this);
-        this.handleCustomTime = this.handleCustomTime.bind(this);
     }
 
     handleCustomTime = changeEvent => {
@@ -48,20 +47,26 @@ export default class ScheduleButtons extends Component {
         return <div className="radioButtons">
             <div className="radioButton">
                 <input type="radio" name="Radios" id="Radio1" value={16}
-                    checked={this.state.selectedRadio === "Radio1"} onClick={this.handleOptionChange}
+                    checked={this.state.selectedRadio === "Radio1"}
+                    onClick={this.handleOptionChange}
                     disabled={this.props.isRunning} />
+
                 <label className="radioLabel"> 16:8 </label>
             </div>
             <div className="radioButton">
                 <input type="radio" name="Radios" id="Radio2" value={18}
-                    checked={this.state.selectedRadio === "Radio2"} onClick={this.handleOptionChange}
+                    checked={this.state.selectedRadio === "Radio2"}
+                    onClick={this.handleOptionChange}
                     disabled={this.props.isRunning} />
+
                 <label className="radioLabel"> 18:6 </label>
             </div>
             <div className="radioButton" id="customSelect">
                 <input type="radio" name="Radios" id="Radio3" value="option3"
-                    checked={this.state.selectedRadio === "Radio3"} onClick={this.handleOptionChange}
+                    checked={this.state.selectedRadio === "Radio3"}
+                    onClick={this.handleOptionChange}
                     disabled={this.props.isRunning} />
+
                 <label className="radioLabel">Custom</label>
                 <OverlayTrigger placement="right" overlay={
                     <Tooltip>
@@ -69,7 +74,8 @@ export default class ScheduleButtons extends Component {
                     </Tooltip>
                 }>
                     <div id="customInput">
-                        <input type="number" id="custom" name="quantity" min="5" max="23" placeholder={this.props.fastLength}
+                        <input type="number" id="custom" name="quantity" min="5" max="23"
+                            placeholder={this.props.fastLength}
                             disabled={this.props.isRunning}
                             onChange={this.handleCustomTime}
                             onClick={this.handleOptionChange} />

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import Moment from 'moment';
 
 let yellow = { color: 'yellow' };
@@ -9,7 +8,7 @@ let green = { color: 'green' };
 export default class Timer extends Component {
     constructor(props) {
         super(props);
-        this.state = {       
+        this.state = {
             endTime: null,
             timerColor: blue
         };
@@ -17,30 +16,23 @@ export default class Timer extends Component {
 
     dispTime = setInterval(() => {
         if (this.props.isRunning) {
-            let prevTime = this.props.displayTime;  // if displayTime is ms differece
+            let prevTime = this.props.displayTime;
             let newTime = prevTime - 1000;
             if (newTime <= 7200000 && newTime > 1800000) {
-                this.setState({
-                    timerColor: yellow
-                })
+                this.setState({ timerColor: yellow })
             } else if (newTime <= 1800000) {
-                this.setState({
-                    timerColor: green
-                })
+                this.setState({ timerColor: green })
             } else {
-                this.setState({
-                    timerColor: blue
-                })
+                this.setState({ timerColor: blue })
             }
 
             if (prevTime > 0) {
                 this.props.setDisplayTime(parseFloat(newTime))
-            }
-            else {
+            } else {
                 this.setState({
                     endTime: Date.now(),
                     timerColor: blue
-                })
+                });
                 this.props.setDurationText(Moment(this.state.endTime).fromNow());
                 this.props.toggleRunning();
                 this.props.saveFast(this.props.fastLength, this.props.displayTime);
@@ -49,7 +41,7 @@ export default class Timer extends Component {
         }
     }, 1000);
 
-    formatTime(ms) {
+    formatTime = (ms) => {
         var hours = Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((ms % (1000 * 60)) / 1000);
@@ -63,7 +55,6 @@ export default class Timer extends Component {
         if (hours < 10) {
             hours = "0" + hours;
         }
-
         return hours + ":" + minutes + ":" + seconds
     }
 

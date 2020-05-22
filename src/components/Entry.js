@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Card from 'react-bootstrap/Card';
 import { BsFillAwardFill, BsX, BsPencil } from "react-icons/bs";
-import '../styling/Entry.css'
+import Card from 'react-bootstrap/Card';
 import Button from "react-bootstrap/Button";
+
+import '../styling/Entry.css';
 
 export default class Entry extends Component {
     constructor(props) {
@@ -10,31 +11,21 @@ export default class Entry extends Component {
         this.state = {}
     }
 
-    formatTime(ms) {
+    formatTime = ms => {
         var hours = Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((ms % (1000 * 60)) / 1000);
 
-        if (minutes < 10) {
+        if (minutes < 10)
             minutes = "0" + minutes;
-        }
-        if (seconds < 10) {
+        if (seconds < 10)
             seconds = "0" + seconds;
-        }
-        if (hours < 10) {
+        if (hours < 10)
             hours = "0" + hours;
-        }
         return hours + ":" + minutes + ":" + seconds
     }
 
-    isSuccess(b) {
-        if (b === true) {
-            return "Yes"
-        }
-        else {
-            return "No"
-        }
-    }
+    isSuccess = b => { return ((b === true) ? "Yes" : "No"); }
 
     render() {
         return (

@@ -9,7 +9,6 @@ export default class OptionsPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {}
-        this.handleStartStop = this.handleStartStop.bind(this);
     }
 
     handleStartStop = () => {
@@ -20,7 +19,6 @@ export default class OptionsPanel extends Component {
             this.props.toggleRunning();
             this.props.saveFast(this.props.fastLength, this.props.displayTime);
             this.props.setDurationText(Moment(Date.now()).fromNow());
-
             this.props.toggleStartButton(false);
         } else {
             this.props.setDisplayTime(this.props.fastLength * 60 * 60 * 1000);
@@ -30,9 +28,8 @@ export default class OptionsPanel extends Component {
     }
 
     setDuration = setInterval(() => {
-        if (this.props.pastFasts.length !== 0) {
+        if (this.props.pastFasts.length !== 0)
             this.props.setDurationText(Moment(this.state.endTime).fromNow());
-        }
     }, 1000 * 60)
 
     render() {
@@ -46,7 +43,9 @@ export default class OptionsPanel extends Component {
                 isRunning={this.props.isRunning}
                 durationText={this.props.durationText} />
 
-            <div className="timeSince">Time since last fast: {this.props.durationText} </div>
+            <div className="timeSince">
+                Time since last fast: {this.props.durationText}
+            </div>
         </div>
     }
 }

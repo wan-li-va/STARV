@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import Button from "react-bootstrap/Button";
+import { BsFillTrashFill } from "react-icons/bs";
+
 import Entry from './Entry.js';
 import Filter from './Filter.js';
 import '../styling/StatsPanel.css';
-import Button from "react-bootstrap/Button";
-import { BsFillTrashFill } from "react-icons/bs";
 
 export default class StatsPanel extends Component {
     constructor(props) {
@@ -11,9 +12,7 @@ export default class StatsPanel extends Component {
         this.state = {
             isFiltering: false,
             filterBy: "none"
-        }
-        this.handleSelectChange = this.handleSelectChange.bind(this);
-    }
+        } }
 
     calcSuccess = () => {
         let percentSucc;
@@ -31,13 +30,10 @@ export default class StatsPanel extends Component {
         return percentSucc;
     }
 
-    handleSelectChange = (filterCat) => {
-        if (filterCat !== "none") {
-            this.setState({ isFiltering: true })
-        }
-        else {
-            this.setState({ isFiltering: false })
-        }
+    handleSelectChange = filterCat => {
+        filterCat !== "none" ?
+            this.setState({ isFiltering: true }) :
+            this.setState({ isFiltering: false });
         this.setState({ filterBy: filterCat });
     }
 
@@ -51,33 +47,24 @@ export default class StatsPanel extends Component {
             } else if (this.state.filterBy === "wasSuccessful") {
                 starvs.sort(function (fast1, fast2) {
                     return fast2.wasSuccessful - fast1.wasSuccessful;
-                })
-            }
-        }
-        else {
+                }) }
+        } else {
             starvs.sort(function (fast1, fast2) {
-                return fast2.dateCompare - fast1.dateCompare;
-            })
+                return fast2.dateCompare - fast1.dateCompare; })
         }
-        return starvs
-    }
+        return starvs }
 
     render() {
-        let starvs;
         let newStarvs;
         if (this.props.pastFasts.length === 0) {
-            newStarvs =
-                <img id="motivate" src={require("../images/motivate.gif")} alt="motivate" />
+            newStarvs = <img id="motivate" src={require("../images/motivate.gif")} alt="motivate" />
         } else {
-            starvs = this.sortBy();
+            let starvs = this.sortBy();
             newStarvs = starvs.map(fast => {
                 return (
                     <Entry key={fast.index} index={fast.index} fast={fast} deleteFast={this.props.deleteFast}
-                        toggleEdit={this.props.toggleEdit} editNotes={this.props.editNotes}
-                    ></Entry>
-                )
-            })
-        }
+                        toggleEdit={this.props.toggleEdit} editNotes={this.props.editNotes} />
+                ); }) }
 
         return (
             <div className="StatsPanel">
@@ -102,6 +89,4 @@ export default class StatsPanel extends Component {
                     </Button>
                 </div>
             </div>
-        )
-    }
-}
+        ) } }
