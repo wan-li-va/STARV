@@ -11,8 +11,8 @@ export default class MainPanel extends Component {
         super(props)
         this.state = {
             isRunning: false,
-            fastLength: 1 / 60 / 30,
-            displayTime: 2000,
+            fastLength: 16,
+            displayTime: 16*1000*60*60,
             startDisabled: false,
             durationText: "you have yet to complete a fast",
         }
